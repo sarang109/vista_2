@@ -21,13 +21,30 @@ the sender picks which verified evidence to show, and answers it in one model.
 Statements and complete proofs are in [`docs/theory.md`](docs/theory.md). The feature typing of every
 dataset is in [`docs/feature_typing.md`](docs/feature_typing.md).
 
+### Names used here and in the paper
+
+The repository numbers its results independently of the manuscript, *Strategy-Proof Fraud Decisions over
+Attested Evidence for Real-Time and Agentic Payments*:
+
+| README, `docs/theory.md` and code | manuscript |
+|---|---|
+| Theorem 1 (characterization) | Theorem 1 (Reachability characterization) |
+| Corollary 1 (control types) | the engineering constraints stated after Theorem 1 |
+| Theorem 2 (evaluation gap) | Eq. (3), FA⋆ ≥ FA0, stated as a consequence of Theorem 1 |
+| Proposition 1 (safe repair), Algorithm 2b, box repair | Proposition 1 (Conservative monotone repair), Eq. (4) |
+| Theorem 3 (splitting) | the cap argument, Eq. (7) |
+| Theorem 4 (no free selection) | Proposition 2 (Zero-leakage disclosure) |
+| Theorem 5 (repeated payments) | the coverage bound, Eq. (10), and sticky selection |
+
+`docs/theory.md` gives the full table with section and equation references.
+
 ## Quick start
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -e ".[test,data]"   # macOS: brew install libomp (LightGBM)
 .venv/bin/python -m pytest                                          # unit tests (~30 s)
 .venv/bin/python -m vista2.run_all --config configs/smoke.json      # everything at reduced scale (~3 min)
-./scripts/fetch_data.sh                                             # BAF, IEEE-CIS (Kaggle), PaySim cache
+./scripts/fetch_data.sh                                             # BAF, IEEE-CIS (Kaggle), PaySim (public)
 .venv/bin/python -m vista2.run_all --config configs/full.json       # full run, 5 seeds (8 cores)
 ```
 
@@ -55,7 +72,7 @@ Outputs go to `results/<config>/`:
 | `vsac.py`, `trust.py`, `payment.py`, `crypto/` | holder-driven binding layer (VSAC v2) and trust registry, from v1 |
 | `disclosure/` | selection leakage on the signature space, repeated payments, sticky selection (Theorems 4–5) |
 | `datasets/` | synthetic real-time payments, agentic workload, BAF, IEEE-CIS, PaySim |
-| `experiments/` | E0–E13 |
+| `experiments/` | E0–E15 |
 | `figures.py`, `report.py`, `run_all.py` | figures, summary, one-command runner |
 
 ## Experiments
@@ -70,22 +87,18 @@ Outputs go to `results/<config>/`:
 | E5 | How fast does fresh branch selection leak across repeated agent payments? | agentic prior |
 | E6 | What does v2 cost in the payment path? | measured |
 | E7 | Does the binding layer still reject every forgery, including on the cumulative claim? | v1 attack suite + new |
-| **E8** | How sensitive are the real-data results to the typing? What would verifying self-reported fields buy? | BAF, IEEE-CIS |
-| **E9** | How does the withholding attack depend on the rollout stage? | synthetic, 0–70% non-issuing banks |
-| **E10** | Measured comparison: raw evidence, opaque score, policy token, SD-JWT, AP2-style caps, v1, v2 | agentic workload |
-| **E11** | Is the attack search tight? Does the attack need white-box access (transfer attacks)? | synthetic |
-| **E12** | Realized operating curves (fraud accepted vs legitimate held, truthful and attacked) | from E2 |
-| **E13** | How does repair cost grow with the claim lattice (64 to 262,144 points)? | synthetic lattices |
-| **E14** | Does the gap survive a bounded attacker (few fields, small value moves)? | IEEE-CIS, BAF, synthetic |
-| **E15** | Is the attack search tight on real data? Do results change at an exact 5% test hold? | IEEE-CIS, BAF, synthetic |
-
-Bold rows are additions beyond the original plan.
+| E8 | How sensitive are the real-data results to the typing? What would verifying self-reported fields buy? | BAF, IEEE-CIS |
+| E9 | How does the withholding attack depend on the rollout stage? | synthetic, 0–70% non-issuing banks |
+| E10 | Measured comparison: raw evidence, opaque score, policy token, SD-JWT, AP2-style caps, v1, v2 | agentic workload |
+| E11 | Is the attack search tight? Does the attack need white-box access (transfer attacks)? | synthetic |
+| E12 | How do the conclusions move with the hold budget (0.5% to 20%)? Thresholds are set on the *test* legitimate scores, so this is an oracle sensitivity analysis, not a deployable evaluation; its 5% row is not the E2 estimate | E2 models, synthetic, IEEE-CIS, BAF |
+| E13 | How does repair cost grow with the claim lattice (64 to 262,144 points)? | synthetic lattices |
+| E14 | Does the gap survive a bounded attacker (few fields, small value moves)? | IEEE-CIS, BAF, synthetic |
+| E15 | Is the attack search tight on real data? Do results change at an exact 5% test hold? | IEEE-CIS, BAF, synthetic |
 
 ## Results
 
-See `results/full/SUMMARY.md` for every table. Headline numbers are filled in below from that file.
-
-All numbers are from `results/full` (5 seeds unless stated; mean ± standard deviation over seeds; fraud
+Every table is in `results/full/SUMMARY.md`. All numbers below are from `results/full` (5 seeds unless stated; mean ± standard deviation over seeds; fraud
 acceptance at the threshold that holds 5% of legitimate validation payments).
 
 **Theory checks (E0).** 27 numerical checks on 50 to 3,000 random instances each (Theorems 1–5, Corollary 1 by
@@ -187,7 +200,7 @@ both takes 0.26 ms p99, and scoring with the control-typed model brings the rece
 The capsule is 1,635 bytes. 0 of 7,793 targeted forgeries (26 attack types, including six on the cumulative
 claim) were accepted; withholding passes the binding layer by design and is handled by the decision rule.
 
-## Honest limitations
+## Limitations
 
 * **Synthetic claims.** No public dataset contains interbank authentication evidence or agent mandates. The
   `W` claims of the synthetic and agentic workloads are generated, and so are their scenario labels; they are a
@@ -214,10 +227,20 @@ claim) were accepted; withholding passes the binding layer by design and is hand
   payments per seed (all other variants use the full test split); their seed-to-seed spread is larger.
 * CPU timings are measured on the machine that ran them; network latency is not modelled.
 
-## Relation to v1 and to CAPE and MERIDIAN
+## Relation to earlier work
 
-The binding layer (VSAC, trust registry, payment encoding) is carried over from VISTA v1, adapted to
-holder-driven presentation, and copied into this repository rather than imported. CAPE and MERIDIAN secure the
-payer side of an agent payment; VISTA v2 studies the receiving institution's decision rule. The atomic
-cumulative counter comes from CAPE's and MERIDIAN's budget ledgers, and the authority-chain minimum from
-MERIDIAN's scope attenuation; both are reused and cited, not claimed.
+The binding layer (VSAC, trust registry, payment encoding) is carried over from VISTA v1 [1], adapted to
+holder-driven presentation, and copied into this repository rather than imported. CAPE [2] secures the payer
+side of an agent payment; VISTA v2 studies the receiving institution's decision rule. The atomic cumulative
+counter is a standard spending ledger of the kind CAPE uses for agent budgets, and the authority-chain minimum
+is attenuation by minimum as in SPKI, UCAN and macaroons; both are reused, not claimed.
+
+1. S. S. Kulkarni, *VISTA: privacy-preserving receiver-verifiable security-control attestation for real-time
+   payments*, research artifact, https://github.com/sarang109/vista.
+2. S. S. Kulkarni, *CAPE: Provenance-aware Semantic Authorization for Agentic Payments*, preprint.
+
+## License and citation
+
+The code is released under the MIT License (`LICENSE`). Citation metadata is in `CITATION.cff`. The
+datasets keep their own licences and are not redistributed here: BAF is CC BY-NC-SA 4.0, IEEE-CIS is
+subject to the Kaggle competition rules, and PaySim is downloaded from its public source.

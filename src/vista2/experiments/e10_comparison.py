@@ -22,6 +22,16 @@ design. Each design is calibrated to hold 5% of legitimate validation payments w
 Attackers: withholding, F manipulation, and both (split up to 4 parts, hour, merchant, text). For designs
 evaluated by the sender on true evidence, withholding cannot change the input but F fields still can.
 `disclosed_bits` is the plug-in entropy of what the receiver learns about the holder's claims.
+
+Why vista_v1 and policy_token report identical acceptance. Both apply the same amount-tiered monotone policy
+with the same calibrated offset; they differ only in who evaluates it. The token is computed by the sender
+on the true claims; v1 evaluates the policy on the claims the holder discloses. Because the policy is
+non-decreasing in every claim, a holder can never raise v1's decision by withholding (its best response is
+to disclose everything it has), so v1's decision on any presentation equals the token's decision on the
+truth: the two are the same function of (true claims, amount tier). The attack moves both identically,
+through the freely chosen amount tier (splitting) and nothing else. The designs differ in what the receiver
+learns (`disclosed_bits`: one bit plus the tier for the token, the disclosed claims for v1), not in fraud
+acceptance.
 """
 from __future__ import annotations
 

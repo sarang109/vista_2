@@ -5,6 +5,24 @@ numerical checks in `e0_verification.csv` (experiment E0) and to the experiments
 Theorems 1–3 are new to v2. Theorems 4 and 5 carry over from v1's selection-leakage analysis and are
 restated here so that the document is self-contained.
 
+## Names used here and in the paper
+
+The repository numbers its results independently of the manuscript ("Strategy-Proof Fraud Decisions over
+Attested Evidence for Real-Time and Agentic Payments"). Equation numbers refer to the manuscript.
+
+| this document, README and code | manuscript |
+|---|---|
+| Definition 1 (presentation order), Definition 2 (SP game) | Section III and Eq. (2), Section IV |
+| Theorem 1 (characterization) | **Theorem 1** (Reachability characterization), Section IV |
+| Corollary 1 (control types) | the three engineering constraints stated after Theorem 1 (unnumbered) |
+| Theorem 2 (evaluation gap) | Eq. (3) and "By Theorem 1, FA⋆ ≥ FA0", Section IV (unnumbered) |
+| Proposition 1 (safe repair), Algorithm 2b, box repair | **Proposition 1** (Conservative monotone repair) and Eq. (4), Section IV |
+| Theorem 3 (splitting) | cap argument and Eq. (7), Section V (unnumbered) |
+| Lemma 1 (leakage decomposition) | Eq. (9), Section VI |
+| Theorem 4 (no free selection) | **Proposition 2** (Zero-leakage disclosure) and the obstruction after it, Section VI |
+| Theorem 5 (repeated payments) | coverage bound Eq. (10) and sticky selection, Section VI (unnumbered) |
+| Algorithms 1, 2a, 2b, 3 | Section VI-B (training and repair implementation) and Section V (cumulative claim) |
+
 ## 1. Model
 
 **Parties.** A sender `S` (a bank, or an AI agent paying under a user's mandate), a receiver `R` that runs a
@@ -133,7 +151,7 @@ that SP holds for exactly the rules described by (a)–(c).
 
 **Delegated authority.** An agent's authority chain `user → platform → agent → sub-agent` signs a level per
 link; the chain level is `min` over links, which is non-decreasing in every link, so the chain is a `W`
-coordinate and Theorems 1–2 apply unchanged (MERIDIAN's scope attenuation, after SPKI, UCAN and macaroons;
+coordinate and Theorems 1–2 apply unchanged (attenuation by minimum, as in SPKI, UCAN and macaroons;
 reused, not claimed). Stripping a link drops the chain to "nothing shown", which an SP rule never rewards.
 
 **Agent-written text.** A justification the agent writes is a completely reachable `F` coordinate, so by
@@ -186,9 +204,9 @@ claim carries `c_{t*} ≥ prior + (accepted total)`, and acceptance requires `c_
 
 Atomicity and binding are necessary, not cosmetic. Without the lock, two parallel requests read the same old
 value. Check `A3.racy` and `e3_atomicity.csv` show the non-atomic counter accepting up to 3.2× the bound under
-32 parallel parts, while the atomic counter never exceeds it. The counter itself is the budget ledger of CAPE
-and MERIDIAN. What is claimed here is the stateless impossibility and carrying the counter to another
-institution as an issuer-signed, PID-bound claim.
+32 parallel parts, while the atomic counter never exceeds it. The counter itself is a standard spending
+ledger (CAPE uses one for agent budgets). What is claimed here is the stateless impossibility and carrying
+the counter to another institution as an issuer-signed, PID-bound claim.
 
 ## 6. Disclosure privacy (Theorems 4 and 5, carried over from v1)
 
@@ -233,8 +251,8 @@ holder's minimal disclosure still reveals. Security and privacy are analysed in 
 Evidence games and the nested-range condition (Green and Laffont 1986), and strategic and withheld-feature
 classification (Hardt et al. 2016; Krishnaswamy et al. 2021), are prior art. So are monotone learning
 (LightGBM and XGBoost monotone constraints; non-negative-weight monotone networks), Ed25519 and salted-digest
-selective disclosure, the atomic budget ledger (CAPE, MERIDIAN), and authority attenuation by minimum (SPKI,
-UCAN, macaroons; MERIDIAN). What is claimed:
+selective disclosure, the atomic budget ledger (CAPE), and authority attenuation by minimum (SPKI, UCAN,
+macaroons). What is claimed:
 
 * the control-typed formulation for cross-institution payments with AI-agent senders;
 * the characterization applied to learned payment-risk models, with the evaluation gap measured;

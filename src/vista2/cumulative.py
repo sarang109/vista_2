@@ -6,9 +6,9 @@ the PID binding, rejects when the claim is missing, and keeps acceptance non-inc
 counter only grows within a window, the last accepted part of a split payment carries c equal to the
 accepted total, so the total accepted per window is at most the largest c the rule accepts.
 
-The atomic counter itself is the budget ledger of CAPE and MERIDIAN; what this module adds is carrying it
-to another institution as a PID-bound third-party fact. `RacyCounter` is the non-atomic variant used to
-show why atomicity is required (two parallel requests both read the old value).
+The atomic counter itself is a standard spending ledger (as in CAPE's budget ledger); what this module
+adds is carrying it to another institution as a PID-bound third-party fact. `RacyCounter` is the
+non-atomic variant used to show why atomicity is required (two parallel requests both read the old value).
 """
 from __future__ import annotations
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Download the public datasets into data/. Needs the Kaggle CLI with an API token, and for IEEE-CIS the
-# competition rules accepted on kaggle.com by the same account.
+# Download the public datasets into data/. BAF and IEEE-CIS need the Kaggle CLI with an API token, and for
+# IEEE-CIS the competition rules accepted on kaggle.com by the same account. PaySim needs no account.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p data/baf data/ieee_cis data/paysim_cache
@@ -18,7 +18,13 @@ for f in train_transaction.csv train_identity.csv; do
   fi
 done
 
-# PaySim column cache from a VISTA v1 checkout (set VISTA_V1 to its path)
-if [ ! -f data/paysim_cache/amount_minor.npy ] && [ -n "${VISTA_V1:-}" ]; then
-  cp "$VISTA_V1"/data/paysim_cache/* data/paysim_cache/
+# PaySim: download the public log (494 MB, no account), verify it against the published statistics and
+# its SHA-256, and build the column cache E3 reads. Pass an existing copy with PAYSIM_CSV=/path/to/file.csv
+if [ ! -f data/paysim_cache/amount_minor.npy ]; then
+  python=${PYTHON:-.venv/bin/python}
+  if [ -n "${PAYSIM_CSV:-}" ]; then
+    "$python" -m vista2.datasets.paysim --csv "$PAYSIM_CSV"
+  else
+    "$python" -m vista2.datasets.paysim
+  fi
 fi

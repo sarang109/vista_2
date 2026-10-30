@@ -1,4 +1,4 @@
-"""E2: what does each defence cost?  (and E12: realized operating curves)
+"""E2: what does each defence cost?  (and E12: operating curves at several hold rates)
 
 Variants (control.variants): naive (no registry capability flags), unconstrained (with flags), monotone in
 W, W-repaired (Algorithm 2b on the claim lattice), fully repaired (W and F; box repair for trees), and
@@ -9,6 +9,11 @@ and under attack, value accepted.
 The full repair of a tree model uses the box relaxation, which is an upper bound on the exact repair. On
 the synthetic data the exact full repair is also computed on a subsample (`e2_box_vs_exact.csv`) to show
 how much of its accuracy loss is the relaxation and how much is inherent to repairing an F-dependent model.
+
+E12 (`e12_operating_curves.csv`) reuses the same models and attacked presentations but sets each threshold
+on the TEST legitimate scores (evaluate.curve) for hold rates of 0.5% to 20%. It is an oracle sensitivity
+analysis of the hold budget, not a deployable evaluation, and its 5% row is not the E2 estimate: E2 sets
+its threshold on the validation period.
 """
 from __future__ import annotations
 

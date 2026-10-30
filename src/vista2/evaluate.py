@@ -60,7 +60,12 @@ def summary(y_test, risk_test, tau, fraud_attacked_risk=None, fraud_amount=None)
 
 
 def curve(y, risk, attacked=None, holds=(0.005, 0.01, 0.02, 0.05, 0.1, 0.2)) -> list[dict]:
-    """Operating points: for each legitimate-hold rate, fraud accepted truthful and under attack."""
+    """Operating points: for each legitimate-hold rate, fraud accepted truthful and under attack.
+
+    The threshold for each rate is set on the legitimate scores passed in, which in E12 are the test
+    payments themselves. These curves are therefore an oracle sensitivity analysis of how the conclusions
+    move with the hold budget, not operating points a receiver could deploy; the deployable thresholds of E2
+    are set on the validation period (`hold_threshold` on validation scores)."""
     y = np.asarray(y)
     r = np.asarray(risk)
     rows = []

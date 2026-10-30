@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite it as below."
+type: software
+title: "VISTA v2: strategy-proof receiver decisions over attested evidence for agentic and real-time payments"
+version: 2.0.0
+date-released: 2026-10-30
+license: MIT
+repository-code: "https://github.com/sarang109/vista_2"
+authors:
+  - family-names: Kulkarni
+    given-names: Sarang Shrikant
+    affiliation: Independent Researcher, Austin, Texas, United States
+abstract: >-
+  Research artifact for the paper "Strategy-Proof Fraud Decisions over Attested Evidence for Real-Time and
+  Agentic Payments". It implements control-typed evidence games, the reachability characterization of
+  strategy-proof receiver decision rules, the evaluation-gap and splitting experiments, conservative monotone
+  repair, an issuer-signed cumulative-spend claim, and the agentic and disclosure-privacy experiments, with
+  the full five-seed results.
+keywords:
+  - payment fraud
+  - strategy-proof decisions
+  - attested evidence
+  - agentic payments
+  - strategic classification
+  - selective disclosure
