@@ -240,6 +240,35 @@ def write(out, manifest):
                                               "fraud_accepted_attack") if a in g else "" for a in order])
         L.append(_table(["dataset", "model"] + [a.replace("_", " ") for a in order], rows))
         L.append("")
+    e15a = _load(out, "e15_attack_tightness.csv")
+    if e15a:
+        L += ["## E15a attack tightness (IEEE-CIS)", "",
+              "Fraud accepted under increasingly thorough searches; restarts start from random reachable "
+              "presentations and keep the best found.", ""]
+        order = ["coord_1_round", "coord_2_rounds", "coord_3_rounds", "coord_4_rounds", "restarts_5", "restarts_10"]
+        rows = []
+        for vname in dict.fromkeys(r["variant"] for r in e15a):
+            g = {r["search"]: r for r in e15a if r["variant"] == vname}
+            rows.append([vname, _pm(g[order[0]], "fraud_accepted_truthful")] +
+                        [_pm(g[o], "fraud_accepted_attack") if o in g else "" for o in order])
+        L.append(_table(["model", "truthful"] + [o.replace("_", " ") for o in order], rows))
+        L.append("")
+    e15b = _load(out, "e15_exact_hold.csv")
+    if e15b:
+        L += ["## E15b exact 5% hold on test payments", "",
+              "Thresholds set on the validation period (as elsewhere) against thresholds that hold exactly 5% of "
+              "legitimate test payments.", ""]
+        rows = []
+        for d in dict.fromkeys(r["dataset"] for r in e15b):
+            for vname in dict.fromkeys(r["variant"] for r in e15b if r["dataset"] == d):
+                g = {r["attack"]: r for r in e15b if r["dataset"] == d and r["variant"] == vname}
+                t_, w_, f_ = g.get("truthful", {}), g.get("withholding", {}), g.get("full", {})
+                rows.append([d, vname, _pm(t_, "legit_held"), _pm(t_, "fraud_accepted_truthful"),
+                             _pm(f_, "fraud_accepted_attack"), _pm(f_, "fraud_accepted_truthful_test_hold"),
+                             _pm(w_, "fraud_accepted_attack_test_hold"), _pm(f_, "fraud_accepted_attack_test_hold")])
+        L.append(_table(["dataset", "model", "legit held (val. threshold)", "truthful (val.)", "full (val.)",
+                         "truthful (exact 5%)", "withholding (exact 5%)", "full (exact 5%)"], rows))
+        L.append("")
     figs = sorted(os.listdir(os.path.join(out, "figures"))) if os.path.isdir(os.path.join(out, "figures")) else []
     if figs:
         L += ["## Figures", ""] + [f"- `figures/{f}`" for f in figs] + [""]

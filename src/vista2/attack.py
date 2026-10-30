@@ -246,3 +246,34 @@ def best_response(risk_fn, X: pd.DataFrame, t: TypedTable, columns, cfg: AttackC
         if not imp.any():
             break
     return result()
+
+
+def best_response_restarts(risk_fn, X: pd.DataFrame, t: TypedTable, columns, cfg: AttackConfig = FULL,
+                           restarts: int = 5, seed: int = 0, checkpoints=()) -> np.ndarray | dict:
+    """Best risk over the plain search and `restarts` searches started from random reachable presentations:
+    W claims weakened to a random level at or below the truth, completely reachable F fields set to a random
+    grid value. The amount, the cumulative claim and step-relabelled fields start at the truth, so every
+    start is reachable from the true input and so is every presentation found from it. With `checkpoints`,
+    returns {k: best risk after k restarts} for each k listed (sharing one sequence of random starts)."""
+    rng = np.random.default_rng(seed)
+    best = best_response(risk_fn, X, t, columns, cfg).risk
+    X0 = X.reset_index(drop=True)
+    snaps = {0: best.copy()} if 0 in checkpoints else {}
+    for k in range(1, restarts + 1):
+        S = X0.copy()
+        for c in columns:
+            s = t.specs[c]
+            if cfg.only is not None and c not in cfg.only:
+                continue
+            if s.ctype == "W" and cfg.withhold:
+                truth = X0[c].to_numpy(float)
+                if s.reach == "poset":
+                    S[c] = np.where(rng.random(len(S)) < 0.5, 0.0, truth)
+                else:
+                    S[c] = np.floor(rng.random(len(S)) * (truth + 1))
+            elif s.ctype == "F" and s.reach == "complete" and cfg.complete and s.values is not None:
+                S[c] = rng.choice(np.asarray(s.values, dtype=float), size=len(S))
+        best = np.minimum(best, best_response(risk_fn, S, t, columns, cfg).risk)
+        if k in checkpoints:
+            snaps[k] = best.copy()
+    return snaps if checkpoints else best

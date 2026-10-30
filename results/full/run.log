@@ -452,3 +452,25 @@
 [08:27:42] e14: ok in 1283.1 s
 [08:27:44] figures: 12 written
 [08:27:44] summary: SUMMARY.md written
+[09:26:19] run full: steps e15
+[09:26:19] e15: attack tightness and exact hold rate
+[09:28:05]   e15a naive seed 1: truthful 0.376, coord_1_round 0.732, coord_2_rounds 0.750, coord_3_rounds 0.753, coord_4_rounds 0.753, restarts_5 0.753, restarts_10 0.754
+[09:29:49]   e15a naive seed 2: truthful 0.369, coord_1_round 0.781, coord_2_rounds 0.797, coord_3_rounds 0.797, coord_4_rounds 0.797, restarts_5 0.800, restarts_10 0.801
+[09:31:34]   e15a naive seed 3: truthful 0.352, coord_1_round 0.770, coord_2_rounds 0.791, coord_3_rounds 0.793, coord_4_rounds 0.793, restarts_5 0.798, restarts_10 0.798
+[09:33:17]   e15a monotone_w seed 1: truthful 0.387, coord_1_round 0.719, coord_2_rounds 0.733, coord_3_rounds 0.734, coord_4_rounds 0.735, restarts_5 0.735, restarts_10 0.735
+[09:35:04]   e15a monotone_w seed 2: truthful 0.366, coord_1_round 0.749, coord_2_rounds 0.763, coord_3_rounds 0.764, coord_4_rounds 0.764, restarts_5 0.766, restarts_10 0.767
+[09:36:37]   e15a monotone_w seed 3: truthful 0.351, coord_1_round 0.735, coord_2_rounds 0.744, coord_3_rounds 0.745, coord_4_rounds 0.745, restarts_5 0.747, restarts_10 0.747
+[09:37:03]   e15a control_typed seed 1: truthful 0.408, coord_1_round 0.408, coord_2_rounds 0.408, coord_3_rounds 0.408, coord_4_rounds 0.408, restarts_5 0.408, restarts_10 0.408
+[09:37:28]   e15a control_typed seed 2: truthful 0.395, coord_1_round 0.395, coord_2_rounds 0.395, coord_3_rounds 0.395, coord_4_rounds 0.395, restarts_5 0.395, restarts_10 0.395
+[09:37:53]   e15a control_typed seed 3: truthful 0.383, coord_1_round 0.383, coord_2_rounds 0.383, coord_3_rounds 0.383, coord_4_rounds 0.383, restarts_5 0.383, restarts_10 0.383
+[09:39:56]   e15b ieee_cis naive: done
+[09:41:57]   e15b ieee_cis monotone_w: done
+[09:43:16]   e15b ieee_cis control_typed: done
+[09:44:00]   e15b baf naive: done
+[09:44:47]   e15b baf monotone_w: done
+[09:45:07]   e15b baf control_typed: done
+[09:45:21]   e15b synthetic naive: done
+[09:45:34]   e15b synthetic unconstrained: done
+[09:45:50]   e15b synthetic monotone_w: done
+[09:46:07]   e15b synthetic control_typed: done
+[09:46:07] e15: ok in 1187.9 s

@@ -94,6 +94,10 @@ def evaluate_trained(t: TypedTable, tr: Trained, attacks: list[AttackConfig], ho
     amounts = Xte[t.amount].to_numpy(float)[fr] if t.amount else None
     base = summary(yte[np.concatenate([np.flatnonzero(yte == 0), fr])],
                    np.concatenate([rt[yte == 0], rt[fr]]), tau, None, amounts)
+    # the same metrics at a threshold that holds exactly `hold` of the test legitimate payments
+    tau_test = hold_threshold(rt[yte == 0], hold)
+    base["tau_test"] = tau_test
+    base["fraud_accepted_truthful_test_hold"] = float((rt[fr] <= tau_test).mean()) if len(fr) else float("nan")
     rows = [dict(base, attack="truthful", fit_s=tr.fit_s, n_test=len(te), n_fraud_attacked=len(fr))]
     for cfg in attacks:
         t0 = time.perf_counter()
@@ -114,6 +118,9 @@ def evaluate_trained(t: TypedTable, tr: Trained, attacks: list[AttackConfig], ho
         s.update(attack=cfg.name, attack_s=time.perf_counter() - t0, fit_s=tr.fit_s, n_test=len(te),
                  n_fraud_attacked=len(fr), mean_split_parts=float(res.split_parts.mean()))
         acc = attacked <= tau
+        s["tau_test"] = tau_test
+        s["fraud_accepted_truthful_test_hold"] = base["fraud_accepted_truthful_test_hold"]
+        s["fraud_accepted_attack_test_hold"] = float((attacked <= tau_test).mean())
         if curves is not None:
             yy = np.concatenate([np.zeros((yte == 0).sum()), np.ones(len(fr))])
             rr = np.concatenate([rt[yte == 0], rt[fr]])

@@ -77,6 +77,7 @@ Outputs go to `results/<config>/`:
 | **E12** | Realized operating curves (fraud accepted vs legitimate held, truthful and attacked) | from E2 |
 | **E13** | How does repair cost grow with the claim lattice (64 to 262,144 points)? | synthetic lattices |
 | **E14** | Does the gap survive a bounded attacker (few fields, small value moves)? | IEEE-CIS, BAF, synthetic |
+| **E15** | Is the attack search tight on real data? Do results change at an exact 5% test hold? | IEEE-CIS, BAF, synthetic |
 
 Bold rows are additions beyond the original plan.
 
@@ -129,6 +130,14 @@ range of the true value (splitting into up to four parts and withholding stay al
 takes it from 41.8% to 75.1%. The control-typed model stays at its truthful level under every budget (39.9% on
 IEEE-CIS). The one place a weak attacker gains little is BAF with very small value moves (+4 points at a 2%
 window), because its self-reported fields matter mainly at their extremes.
+
+**The numbers are robust to how they are measured (E15).** A much stronger search on IEEE-CIS (four rounds, or
+the best of ten random restarts) finds only 0.3–0.5 points more than the two-round search used throughout
+(naive model: 77.9% vs 78.4%), so the reported attack numbers are close to the true best response.
+Thresholds are set on the validation period, so the held share of legitimate test payments drifts to
+5.7–7%. Re-scoring at a threshold that holds exactly 5% on test shifts acceptance by about 0.5–6 points and
+changes no conclusion: on IEEE-CIS the naive model goes from 38.8% to 79.8% under attack, the control-typed model
+stays at 42.1%.
 
 **Repairing a black box is not a substitute for control-typed training (E2, E13).** Repairing `W` only
 (Algorithm 2b) costs 0.025 AUC and leaves the `F` attacks open. The full safe repair is SP by construction,
@@ -189,7 +198,12 @@ claim) were accepted; withholding passes the binding layer by design and is hand
   b fields, or values within a fraction of each field's range of the truth) to show how much of the gap a
   weaker attacker still gets.
 * **The attacker is a search, not an oracle.** Coordinate search (two rounds) gives lower bounds on attack
-  success; E11 shows that exhaustive enumeration of the claim lattice finds no more on the synthetic data.
+  success; exhaustive enumeration of the claim lattice finds no more on the synthetic data (E11), and four
+  rounds or ten random restarts add at most half a point on IEEE-CIS (E15).
+* **Hold rates drift between periods.** Thresholds come from the validation period, so 5.7–7% of legitimate
+  real-data test payments are held rather than exactly 5%; E15 reports the main tables at an exact 5% as well.
+* **Splitting on IEEE-CIS leaves Vesta's count features unchanged.** In practice they would also move; this
+  affects only the full attack, which reaches 76.6% without splitting against 79.0% with it.
 * **Control-typed resistance holds by construction.** What the experiments measure is its accuracy cost and the
   size of the attacks it removes.
 * **Honest-issuer assumption.** The sending bank signs truthfully and runs the counter atomically. The threat

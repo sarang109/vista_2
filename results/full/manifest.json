@@ -81,6 +81,11 @@
       1,
       2,
       3
+    ],
+    "seeds_e15": [
+      1,
+      2,
+      3
     ]
   },
   "versions": {
@@ -236,6 +241,18 @@
         "e14_bounded.csv": "9564033b0d903a1c3b114af510c08e28d0efe54dc08e1d5df63eb2e08b294e9a"
       },
       "seconds": 1283.1
+    },
+    {
+      "step": "e15",
+      "description": "attack tightness and exact hold rate",
+      "status": "ok",
+      "files": {
+        "e15_attack_tightness_runs.csv": "98e6da28882f244cf9a446218b5218e596ef593cf1f89babd17e99cc8ff957db",
+        "e15_attack_tightness.csv": "c8ffa7bd88cb1e28b11bb590015ad4d6bc0e3055df2c4a0a88e83f35a9d4f7e0",
+        "e15_exact_hold_runs.csv": "8d4c85d36f01f566e8ab9eec18607f2a8312b1cb22b20411180da06ef1b16efb",
+        "e15_exact_hold.csv": "ca5bb455b59e0a31963b3d517643d0f867fa0fd9861475dc9de50a8eb48ab73c"
+      },
+      "seconds": 1187.9
     }
   ]
 }

@@ -18,6 +18,7 @@ Python 3.14.7, LightGBM 4.7.0, XGBoost 3.4.1, scikit-learn 1.9.1, 8 CPUs (arm64)
 | e2 cost of each defence, operating curves | ok | 3871.1 |
 | e8 typing sensitivity | ok | 432.4 |
 | e14 bounded attacker | ok | 1283.1 |
+| e15 attack tightness and exact hold rate | ok | 1187.9 |
 
 ## E0 theory checks
 
@@ -368,6 +369,33 @@ Fraud accepted under attackers limited in how many freely chosen fields they may
 | synthetic | conventional | 40.5% ± 0.5% | 50.3% ± 0.1% | 78.0% ± 0.2% | 85.2% ± 0.3% | 86.8% ± 0.3% | 86.8% ± 0.3% | 84.0% ± 0.4% | 84.8% ± 0.2% | 85.2% ± 0.3% | 86.2% ± 0.2% | 87.4% ± 0.0% | 83.6% ± 0.4% | 87.7% ± 0.3% |
 | synthetic | monotone_w | 40.8% ± 0.6% | 40.8% ± 0.6% | 69.9% ± 0.1% | 78.9% ± 0.5% | 80.6% ± 0.6% | 80.6% ± 0.6% | 76.2% ± 0.2% | 77.2% ± 0.3% | 77.8% ± 0.3% | 79.2% ± 0.4% | 80.6% ± 0.7% | 76.7% ± 0.2% | 80.8% ± 0.7% |
 | synthetic | control_typed | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% |
+
+## E15a attack tightness (IEEE-CIS)
+
+Fraud accepted under increasingly thorough searches; restarts start from random reachable presentations and keep the best found.
+
+| model | truthful | coord 1 round | coord 2 rounds | coord 3 rounds | coord 4 rounds | restarts 5 | restarts 10 |
+|---|---|---|---|---|---|---|---|
+| naive | 36.6% ± 1.2% | 76.1% ± 2.6% | 77.9% ± 2.5% | 78.1% ± 2.4% | 78.1% ± 2.4% | 78.4% ± 2.6% | 78.4% ± 2.6% |
+| monotone_w | 36.8% ± 1.8% | 73.4% ± 1.5% | 74.7% ± 1.5% | 74.8% ± 1.5% | 74.8% ± 1.5% | 75.0% ± 1.5% | 75.0% ± 1.6% |
+| control_typed | 39.5% ± 1.3% | 39.5% ± 1.3% | 39.5% ± 1.3% | 39.5% ± 1.3% | 39.5% ± 1.3% | 39.5% ± 1.3% | 39.5% ± 1.3% |
+
+## E15b exact 5% hold on test payments
+
+Thresholds set on the validation period (as elsewhere) against thresholds that hold exactly 5% of legitimate test payments.
+
+| dataset | model | legit held (val. threshold) | truthful (val.) | full (val.) | truthful (exact 5%) | withholding (exact 5%) | full (exact 5%) |
+|---|---|---|---|---|---|---|---|
+| ieee_cis | naive | 5.7% ± 0.0% | 36.9% ± 0.4% | 79.0% ± 1.5% | 38.8% ± 0.4% | 48.5% ± 1.1% | 79.8% ± 1.6% |
+| ieee_cis | monotone_w | 5.8% ± 0.0% | 37.0% ± 0.6% | 76.5% ± 1.2% | 39.0% ± 0.7% | 39.0% ± 0.7% | 77.4% ± 1.2% |
+| ieee_cis | control_typed | 5.8% ± 0.1% | 39.9% ± 0.5% | 39.9% ± 0.5% | 42.1% ± 0.5% | 42.1% ± 0.5% | 42.1% ± 0.5% |
+| baf | naive | 6.0% ± 0.0% | 42.1% ± 0.5% | 100.0% | 46.0% ± 0.1% | 48.3% ± 0.2% | 100.0% |
+| baf | monotone_w | 6.0% ± 0.1% | 41.9% ± 0.6% | 100.0% | 45.8% ± 0.2% | 45.8% ± 0.2% | 100.0% |
+| baf | control_typed | 7.0% ± 0.2% | 64.1% ± 0.9% | 64.1% ± 0.9% | 70.3% ± 0.4% | 70.3% ± 0.4% | 70.3% ± 0.4% |
+| synthetic | naive | 5.1% ± 0.0% | 40.7% ± 0.3% | 89.6% ± 0.5% | 41.2% ± 0.4% | 53.3% ± 0.4% | 89.8% ± 0.6% |
+| synthetic | unconstrained | 5.1% ± 0.1% | 40.5% ± 0.4% | 87.7% ± 0.2% | 41.1% ± 0.4% | 50.5% ± 0.4% | 87.9% ± 0.3% |
+| synthetic | monotone_w | 5.2% ± 0.0% | 40.8% ± 0.4% | 81.0% ± 0.6% | 41.4% ± 0.2% | 41.4% ± 0.2% | 81.6% ± 0.7% |
+| synthetic | control_typed | 5.1% ± 0.0% | 42.6% ± 0.4% | 42.6% ± 0.4% | 42.9% ± 0.2% | 42.9% ± 0.2% | 42.9% ± 0.2% |
 
 ## Figures
 
