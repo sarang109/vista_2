@@ -1,0 +1,28 @@
+id,check,instances,failures,max_error,note,passed
+T1.dstar_ge_d,dstar_ge_d,3000,0,,,True
+T1.dstar_monotone,dstar_monotone,3000,0,,,True
+T1.sp_iff_fixed_point,sp_iff_fixed_point,3000,0,,,True
+T1.sp_iff_monotone,sp_iff_monotone,3000,0,,,True
+T1.repair_sp,repair_sp,3000,0,,,True
+T1.repair_below_d,repair_below_d,3000,0,,,True
+T1.repair_largest,repair_largest,1865,0,,,True
+T1.repair_fixes_sp,repair_fixes_sp,3000,0,,,True
+T1.closure_preorder,closure_preorder,3000,0,,,True
+T1.dstar_idempotent,dstar_idempotent,3000,0,,,True
+C1.enumeration,"SP iff monotone in W, constant in complete F, free in T",262144,0,,,True
+T2.gap_nonnegative,realized >= evaluated acceptance,3000,0,,,True
+T2.equality,gap = 0 iff no supported non-accepted input reaches an accepted presentation,3000,0,,,True
+T3.1.impossibility,k parts of an accepted amount move more than a rejected amount,3000,0,,,True
+T3.2.sufficiency,accepted total per window <= B - prior spend,3000,0,,,True
+A3.atomic,atomic counter: accepted total <= B under 16 parallel parts,50,0,0,"B=10000, part=1000; worst accepted total 10000",True
+A3.racy,racy counter: accepted total <= B under 16 parallel parts,50,50,6000,"B=10000, part=1000; worst accepted total 16000",expected to fail
+A2b.dp,lattice DP = recursion = max over up-set,300,0,0,,True
+BOX.point,box repair with no moving coordinates equals the model,300,0,0,,True
+BOX.upper,box repair >= exact repair (W lattice),300,0,0.120755,mean excess 0.01156,True
+BOX.exact_ge_model,exact repair >= model risk,300,0,,,True
+BOX.monotone,repaired risk does not fall when claims are withheld,600,0,,,True
+T4.obstruction,two-branch obstruction implies no zero-leakage kernel,300,0,,,True
+T4.zero_kernel,LP solution gives Lambda = 0,300,0,,,True
+T5.mi_bound,I(X;V^n) <= n I(X;V),600,0,,,True
+T5.sticky,sticky selection keeps Lambda_n = Lambda_1,300,0,,,True
+T5.coverage,ln(m/delta)/q_min payments reveal every branch w.p. >= 1 - delta,300,0,,,True

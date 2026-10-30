@@ -1,0 +1,16 @@
+policy,branches,signatures,zero_leakage_feasible,residual,two_branch_obstruction,accept_mass,kernel,coverage_bound_payments,min_prob_all_seen_at_bound,bound_holds
+P1_three_branch,3,7,False,2,True,0.850487,,,,
+P1_three_branch,,,,,,,uniform_fresh,13,0.984587,True
+P1_three_branch,,,,,,,exp0.5_fresh,19,0.990769,True
+P1_three_branch,,,,,,,exp1.0_fresh,31,0.989298,True
+P1_three_branch,,,,,,,exp2.0_fresh,88,0.985343,True
+P2_two_branch,2,3,False,1,True,0.678028,,,,
+P2_two_branch,,,,,,,uniform_fresh,8,0.992188,True
+P2_two_branch,,,,,,,exp0.5_fresh,11,0.989888,True
+P2_two_branch,,,,,,,exp1.0_fresh,18,0.986234,True
+P2_two_branch,,,,,,,exp2.0_fresh,55,0.978452,True
+P3_four_branch,4,15,False,5,True,0.902859,,,,
+P3_four_branch,,,,,,,uniform_fresh,18,0.977472,True
+P3_four_branch,,,,,,,exp0.5_fresh,26,0.990934,True
+P3_four_branch,,,,,,,exp1.0_fresh,40,0.990411,True
+P3_four_branch,,,,,,,exp2.0_fresh,106,0.989068,True

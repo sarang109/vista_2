@@ -1,0 +1,13 @@
+dataset,change,kind,ct_auc,ct_fraud_accepted,ct_realized,naive_auc,naive_fraud_accepted,naive_realized,auc_cost
+baf,baseline typing,baseline,0.769065,0.651333,0.651333,0.888675,0.434,1,0.11961
+baf,customer_age -> T,optimistic,0.786833,0.638,0.638,0.888825,0.43,1,0.101992
+baf,current_address_months_count -> T,optimistic,0.795991,0.646667,0.646667,0.888179,0.434667,1,0.0921883
+baf,prev_address_months_count -> T,optimistic,0.793708,0.648,0.648,0.888451,0.433333,1,0.0947425
+baf,days_since_request -> T,optimistic,0.772014,0.652,0.652,0.888426,0.438,1,0.116412
+baf,device_distinct_emails_8w -> F,pessimistic,0.764026,0.668,0.668,0.88908,0.436,1,0.125053
+baf,device_fraud_count -> F,pessimistic,0.769065,0.651333,0.651333,0.888675,0.434,1,0.11961
+baf,foreign_request -> F,pessimistic,0.769258,0.654,0.654,0.888845,0.437333,1,0.119587
+baf,has_other_cards -> F,pessimistic,0.749894,0.702667,0.702667,0.889632,0.433333,1,0.139739
+baf,verify_income_employment,verified_upgrade,0.7909,0.607333,0.607333,0.888681,0.435333,1,0.0977805
+baf,verify_identity_fields,verified_upgrade,0.839497,0.558667,0.558667,0.888126,0.434667,1,0.0486288
+baf,verify_all_self_reported,verified_upgrade,0.85905,0.504,0.504,0.887634,0.433333,0.942667,0.0285844

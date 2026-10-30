@@ -1,0 +1,27 @@
+variant,attack,truthful,attacked,gain,predicted_no_gain,consistent,exposure_attack,exposure_truthful
+control_typed,withhold_split,0.416544,0.416544,0,True,True,301816,301816
+control_typed,persuasive_text,0.416544,0.416544,0,True,True,301816,301816
+control_typed,merchant_retry,0.416544,0.416544,0,True,True,301816,301816
+control_typed,chain_strip,0.416544,0.416544,0,True,True,301816,301816
+control_typed,full,0.416544,0.416544,0,True,True,301816,301816
+control_typed_text_hold,withhold_split,0.377396,0.377396,0,False,True,288263,288263
+control_typed_text_hold,persuasive_text,0.377396,0.437838,0.0604423,False,True,328678,288263
+control_typed_text_hold,merchant_retry,0.377396,0.377396,0,False,True,288263,288263
+control_typed_text_hold,chain_strip,0.377396,0.377396,0,False,True,288263,288263
+control_typed_text_hold,full,0.377396,0.437838,0.0604423,False,True,328678,288263
+monotone_w,withhold_split,0.325962,0.401966,0.0760033,False,True,386742,298244
+monotone_w,persuasive_text,0.325962,0.618018,0.292056,False,True,595680,298244
+monotone_w,merchant_retry,0.325962,0.504996,0.179034,False,True,471307,298244
+monotone_w,chain_strip,0.325962,0.325962,0,True,True,298244,298244
+monotone_w,full,0.325962,0.797215,0.471253,False,True,831662,298244
+naive,withhold_split,0.320066,0.573956,0.25389,False,True,566699,291538
+naive,persuasive_text,0.320066,0.615561,0.295495,False,True,603610,291538
+naive,merchant_retry,0.320066,0.512203,0.192138,False,True,479308,291538
+naive,chain_strip,0.320066,0.515315,0.19525,False,True,466062,291538
+naive,full,0.320066,0.826699,0.506634,False,True,869911,291538
+unconstrained,withhold_split,0.320393,0.563636,0.243243,False,True,551866,290658
+unconstrained,persuasive_text,0.320393,0.617035,0.296642,False,True,607470,290658
+unconstrained,merchant_retry,0.320393,0.510238,0.189844,False,True,478458,290658
+unconstrained,chain_strip,0.320393,0.492547,0.172154,False,True,440495,290658
+unconstrained,full,0.320393,0.824898,0.504505,False,True,869842,290658
+GATE_B,all,,,4,naive model gains on this many of 4 adversaries,True,,

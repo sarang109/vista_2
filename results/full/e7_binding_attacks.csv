@@ -1,0 +1,244 @@
+attack,ablation,trials,accepted,acceptance_rate,expected_defence,top_reason
+amount_substitution,full,300,0,0,PID binding,pid_mismatch
+amount_substitution,no_audience_binding,300,0,0,PID binding,pid_mismatch
+amount_substitution,no_commitment_check,300,0,0,PID binding,pid_mismatch
+amount_substitution,no_cumulative_check,300,0,0,PID binding,pid_mismatch
+amount_substitution,no_freshness,300,0,0,PID binding,pid_mismatch
+amount_substitution,no_nonce_no_replay_cache,300,0,0,PID binding,pid_mismatch
+amount_substitution,no_signature_check,300,0,0,PID binding,pid_mismatch
+amount_substitution,no_status_check,300,0,0,PID binding,pid_mismatch
+amount_substitution,no_transaction_binding,300,300,1,PID binding,ok
+audience_redirect,full,300,0,0,audience binding,pid_mismatch
+audience_redirect,no_audience_binding,300,0,0,audience binding,pid_mismatch
+audience_redirect,no_commitment_check,300,0,0,audience binding,pid_mismatch
+audience_redirect,no_cumulative_check,300,0,0,audience binding,pid_mismatch
+audience_redirect,no_freshness,300,0,0,audience binding,pid_mismatch
+audience_redirect,no_nonce_no_replay_cache,300,0,0,audience binding,pid_mismatch
+audience_redirect,no_signature_check,300,0,0,audience binding,pid_mismatch
+audience_redirect,no_status_check,300,0,0,audience binding,pid_mismatch
+audience_redirect,no_transaction_binding,300,0,0,audience binding,audience_mismatch
+beneficiary_substitution,full,300,0,0,PID binding,pid_mismatch
+beneficiary_substitution,no_audience_binding,300,0,0,PID binding,pid_mismatch
+beneficiary_substitution,no_commitment_check,300,0,0,PID binding,pid_mismatch
+beneficiary_substitution,no_cumulative_check,300,0,0,PID binding,pid_mismatch
+beneficiary_substitution,no_freshness,300,0,0,PID binding,pid_mismatch
+beneficiary_substitution,no_nonce_no_replay_cache,300,0,0,PID binding,pid_mismatch
+beneficiary_substitution,no_signature_check,300,0,0,PID binding,pid_mismatch
+beneficiary_substitution,no_status_check,300,0,0,PID binding,pid_mismatch
+beneficiary_substitution,no_transaction_binding,300,300,1,PID binding,ok
+claim_injection,full,300,0,0,disclosure commitment,disclosure_not_committed
+claim_injection,no_audience_binding,300,0,0,disclosure commitment,disclosure_not_committed
+claim_injection,no_commitment_check,300,300,1,disclosure commitment,ok
+claim_injection,no_cumulative_check,300,0,0,disclosure commitment,disclosure_not_committed
+claim_injection,no_freshness,300,0,0,disclosure commitment,disclosure_not_committed
+claim_injection,no_nonce_no_replay_cache,300,0,0,disclosure commitment,disclosure_not_committed
+claim_injection,no_signature_check,300,0,0,disclosure commitment,disclosure_not_committed
+claim_injection,no_status_check,300,0,0,disclosure commitment,disclosure_not_committed
+claim_injection,no_transaction_binding,300,0,0,disclosure commitment,disclosure_not_committed
+claim_upgrade,full,293,0,0,disclosure commitment,disclosure_not_committed
+claim_upgrade,no_audience_binding,293,0,0,disclosure commitment,disclosure_not_committed
+claim_upgrade,no_commitment_check,293,293,1,disclosure commitment,ok
+claim_upgrade,no_cumulative_check,293,0,0,disclosure commitment,disclosure_not_committed
+claim_upgrade,no_freshness,293,0,0,disclosure commitment,disclosure_not_committed
+claim_upgrade,no_nonce_no_replay_cache,293,0,0,disclosure commitment,disclosure_not_committed
+claim_upgrade,no_signature_check,293,0,0,disclosure commitment,disclosure_not_committed
+claim_upgrade,no_status_check,293,0,0,disclosure commitment,disclosure_not_committed
+claim_upgrade,no_transaction_binding,293,0,0,disclosure commitment,disclosure_not_committed
+cross_tx_transplant,full,300,0,0,PID binding,pid_mismatch
+cross_tx_transplant,no_audience_binding,300,0,0,PID binding,pid_mismatch
+cross_tx_transplant,no_commitment_check,300,0,0,PID binding,pid_mismatch
+cross_tx_transplant,no_cumulative_check,300,0,0,PID binding,pid_mismatch
+cross_tx_transplant,no_freshness,300,0,0,PID binding,pid_mismatch
+cross_tx_transplant,no_nonce_no_replay_cache,300,0,0,PID binding,pid_mismatch
+cross_tx_transplant,no_signature_check,300,0,0,PID binding,pid_mismatch
+cross_tx_transplant,no_status_check,300,0,0,PID binding,pid_mismatch
+cross_tx_transplant,no_transaction_binding,300,300,1,PID binding,ok
+cum_bitflip,full,300,0,0,cumulative signature,cumulative_bad_signature
+cum_bitflip,no_audience_binding,300,0,0,cumulative signature,cumulative_bad_signature
+cum_bitflip,no_commitment_check,300,0,0,cumulative signature,cumulative_bad_signature
+cum_bitflip,no_cumulative_check,300,300,1,cumulative signature,ok
+cum_bitflip,no_freshness,300,0,0,cumulative signature,cumulative_bad_signature
+cum_bitflip,no_nonce_no_replay_cache,300,0,0,cumulative signature,cumulative_bad_signature
+cum_bitflip,no_signature_check,300,0,0,cumulative signature,cumulative_bad_signature
+cum_bitflip,no_status_check,300,0,0,cumulative signature,cumulative_bad_signature
+cum_bitflip,no_transaction_binding,300,0,0,cumulative signature,cumulative_bad_signature
+cum_foreign_issuer,full,300,0,0,cumulative issuer match,cumulative_issuer_mismatch
+cum_foreign_issuer,no_audience_binding,300,0,0,cumulative issuer match,cumulative_issuer_mismatch
+cum_foreign_issuer,no_commitment_check,300,0,0,cumulative issuer match,cumulative_issuer_mismatch
+cum_foreign_issuer,no_cumulative_check,300,300,1,cumulative issuer match,ok
+cum_foreign_issuer,no_freshness,300,0,0,cumulative issuer match,cumulative_issuer_mismatch
+cum_foreign_issuer,no_nonce_no_replay_cache,300,0,0,cumulative issuer match,cumulative_issuer_mismatch
+cum_foreign_issuer,no_signature_check,300,0,0,cumulative issuer match,cumulative_issuer_mismatch
+cum_foreign_issuer,no_status_check,300,0,0,cumulative issuer match,cumulative_issuer_mismatch
+cum_foreign_issuer,no_transaction_binding,300,0,0,cumulative issuer match,cumulative_issuer_mismatch
+cum_replay,full,300,0,0,cumulative PID binding,cumulative_binding_mismatch
+cum_replay,no_audience_binding,300,0,0,cumulative PID binding,cumulative_binding_mismatch
+cum_replay,no_commitment_check,300,0,0,cumulative PID binding,cumulative_binding_mismatch
+cum_replay,no_cumulative_check,300,300,1,cumulative PID binding,ok
+cum_replay,no_freshness,300,0,0,cumulative PID binding,cumulative_binding_mismatch
+cum_replay,no_nonce_no_replay_cache,300,0,0,cumulative PID binding,cumulative_binding_mismatch
+cum_replay,no_signature_check,300,0,0,cumulative PID binding,cumulative_binding_mismatch
+cum_replay,no_status_check,300,0,0,cumulative PID binding,cumulative_binding_mismatch
+cum_replay,no_transaction_binding,300,0,0,cumulative PID binding,cumulative_binding_mismatch
+cum_rewrite,full,300,0,0,cumulative signature,cumulative_bad_signature
+cum_rewrite,no_audience_binding,300,0,0,cumulative signature,cumulative_bad_signature
+cum_rewrite,no_commitment_check,300,0,0,cumulative signature,cumulative_bad_signature
+cum_rewrite,no_cumulative_check,300,300,1,cumulative signature,ok
+cum_rewrite,no_freshness,300,0,0,cumulative signature,cumulative_bad_signature
+cum_rewrite,no_nonce_no_replay_cache,300,0,0,cumulative signature,cumulative_bad_signature
+cum_rewrite,no_signature_check,300,0,0,cumulative signature,cumulative_bad_signature
+cum_rewrite,no_status_check,300,0,0,cumulative signature,cumulative_bad_signature
+cum_rewrite,no_transaction_binding,300,0,0,cumulative signature,cumulative_bad_signature
+cum_strip,full,300,0,0,cumulative required,missing_cumulative
+cum_strip,no_audience_binding,300,0,0,cumulative required,missing_cumulative
+cum_strip,no_commitment_check,300,0,0,cumulative required,missing_cumulative
+cum_strip,no_cumulative_check,300,0,0,cumulative required,missing_cumulative
+cum_strip,no_freshness,300,0,0,cumulative required,missing_cumulative
+cum_strip,no_nonce_no_replay_cache,300,0,0,cumulative required,missing_cumulative
+cum_strip,no_signature_check,300,0,0,cumulative required,missing_cumulative
+cum_strip,no_status_check,300,0,0,cumulative required,missing_cumulative
+cum_strip,no_transaction_binding,300,0,0,cumulative required,missing_cumulative
+cum_wrong_window,full,300,0,0,cumulative window,cumulative_wrong_window
+cum_wrong_window,no_audience_binding,300,0,0,cumulative window,cumulative_wrong_window
+cum_wrong_window,no_commitment_check,300,0,0,cumulative window,cumulative_wrong_window
+cum_wrong_window,no_cumulative_check,300,300,1,cumulative window,ok
+cum_wrong_window,no_freshness,300,0,0,cumulative window,cumulative_wrong_window
+cum_wrong_window,no_nonce_no_replay_cache,300,0,0,cumulative window,cumulative_wrong_window
+cum_wrong_window,no_signature_check,300,0,0,cumulative window,cumulative_wrong_window
+cum_wrong_window,no_status_check,300,0,0,cumulative window,cumulative_wrong_window
+cum_wrong_window,no_transaction_binding,300,0,0,cumulative window,cumulative_wrong_window
+currency_substitution,full,300,0,0,PID binding,pid_mismatch
+currency_substitution,no_audience_binding,300,0,0,PID binding,pid_mismatch
+currency_substitution,no_commitment_check,300,0,0,PID binding,pid_mismatch
+currency_substitution,no_cumulative_check,300,0,0,PID binding,pid_mismatch
+currency_substitution,no_freshness,300,0,0,PID binding,pid_mismatch
+currency_substitution,no_nonce_no_replay_cache,300,0,0,PID binding,pid_mismatch
+currency_substitution,no_signature_check,300,0,0,PID binding,pid_mismatch
+currency_substitution,no_status_check,300,0,0,PID binding,pid_mismatch
+currency_substitution,no_transaction_binding,300,300,1,PID binding,ok
+digest_injection,full,300,0,0,credential signature,bad_signature
+digest_injection,no_audience_binding,300,0,0,credential signature,bad_signature
+digest_injection,no_commitment_check,300,0,0,credential signature,bad_signature
+digest_injection,no_cumulative_check,300,0,0,credential signature,bad_signature
+digest_injection,no_freshness,300,0,0,credential signature,bad_signature
+digest_injection,no_nonce_no_replay_cache,300,0,0,credential signature,bad_signature
+digest_injection,no_signature_check,300,300,1,credential signature,ok
+digest_injection,no_status_check,300,0,0,credential signature,bad_signature
+digest_injection,no_transaction_binding,300,0,0,credential signature,bad_signature
+expired_capsule,full,300,0,0,freshness,expired
+expired_capsule,no_audience_binding,300,0,0,freshness,expired
+expired_capsule,no_commitment_check,300,0,0,freshness,expired
+expired_capsule,no_cumulative_check,300,0,0,freshness,expired
+expired_capsule,no_freshness,300,203,0.676667,freshness,ok
+expired_capsule,no_nonce_no_replay_cache,300,0,0,freshness,expired
+expired_capsule,no_signature_check,300,0,0,freshness,expired
+expired_capsule,no_status_check,300,0,0,freshness,expired
+expired_capsule,no_transaction_binding,300,0,0,freshness,expired
+issuer_substitution,full,300,0,0,issuer-institution match,issuer_mismatch
+issuer_substitution,no_audience_binding,300,0,0,issuer-institution match,issuer_mismatch
+issuer_substitution,no_commitment_check,300,0,0,issuer-institution match,issuer_mismatch
+issuer_substitution,no_cumulative_check,300,0,0,issuer-institution match,issuer_mismatch
+issuer_substitution,no_freshness,300,0,0,issuer-institution match,issuer_mismatch
+issuer_substitution,no_nonce_no_replay_cache,300,0,0,issuer-institution match,issuer_mismatch
+issuer_substitution,no_signature_check,300,0,0,issuer-institution match,issuer_mismatch
+issuer_substitution,no_status_check,300,0,0,issuer-institution match,issuer_mismatch
+issuer_substitution,no_transaction_binding,300,0,0,issuer-institution match,issuer_mismatch
+kid_swap,full,300,0,0,key resolution + signature,issuer_mismatch
+kid_swap,no_audience_binding,300,0,0,key resolution + signature,issuer_mismatch
+kid_swap,no_commitment_check,300,0,0,key resolution + signature,issuer_mismatch
+kid_swap,no_cumulative_check,300,0,0,key resolution + signature,issuer_mismatch
+kid_swap,no_freshness,300,0,0,key resolution + signature,issuer_mismatch
+kid_swap,no_nonce_no_replay_cache,300,0,0,key resolution + signature,issuer_mismatch
+kid_swap,no_signature_check,300,0,0,key resolution + signature,issuer_mismatch
+kid_swap,no_status_check,300,0,0,key resolution + signature,issuer_mismatch
+kid_swap,no_transaction_binding,300,0,0,key resolution + signature,issuer_mismatch
+malformed_json,full,300,0,0,parser fails closed,malformed
+malformed_json,no_audience_binding,300,0,0,parser fails closed,malformed
+malformed_json,no_commitment_check,300,0,0,parser fails closed,malformed
+malformed_json,no_cumulative_check,300,0,0,parser fails closed,malformed
+malformed_json,no_freshness,300,0,0,parser fails closed,malformed
+malformed_json,no_nonce_no_replay_cache,300,0,0,parser fails closed,malformed
+malformed_json,no_signature_check,300,0,0,parser fails closed,malformed
+malformed_json,no_status_check,300,0,0,parser fails closed,malformed
+malformed_json,no_transaction_binding,300,0,0,parser fails closed,malformed
+missing_capsule,full,300,0,0,fails closed,missing_capsule
+missing_capsule,no_audience_binding,300,0,0,fails closed,missing_capsule
+missing_capsule,no_commitment_check,300,0,0,fails closed,missing_capsule
+missing_capsule,no_cumulative_check,300,0,0,fails closed,missing_capsule
+missing_capsule,no_freshness,300,0,0,fails closed,missing_capsule
+missing_capsule,no_nonce_no_replay_cache,300,0,0,fails closed,missing_capsule
+missing_capsule,no_signature_check,300,0,0,fails closed,missing_capsule
+missing_capsule,no_status_check,300,0,0,fails closed,missing_capsule
+missing_capsule,no_transaction_binding,300,0,0,fails closed,missing_capsule
+nonce_forgery,full,300,0,0,receiver challenge,nonce_unknown_or_reused
+nonce_forgery,no_audience_binding,300,0,0,receiver challenge,nonce_unknown_or_reused
+nonce_forgery,no_commitment_check,300,0,0,receiver challenge,nonce_unknown_or_reused
+nonce_forgery,no_cumulative_check,300,0,0,receiver challenge,nonce_unknown_or_reused
+nonce_forgery,no_freshness,300,0,0,receiver challenge,nonce_unknown_or_reused
+nonce_forgery,no_nonce_no_replay_cache,300,300,1,receiver challenge,ok
+nonce_forgery,no_signature_check,300,0,0,receiver challenge,nonce_unknown_or_reused
+nonce_forgery,no_status_check,300,0,0,receiver challenge,nonce_unknown_or_reused
+nonce_forgery,no_transaction_binding,300,0,0,receiver challenge,nonce_unknown_or_reused
+pid_rewrite,full,300,0,0,credential signature,bad_signature
+pid_rewrite,no_audience_binding,300,0,0,credential signature,bad_signature
+pid_rewrite,no_commitment_check,300,0,0,credential signature,bad_signature
+pid_rewrite,no_cumulative_check,300,0,0,credential signature,bad_signature
+pid_rewrite,no_freshness,300,0,0,credential signature,bad_signature
+pid_rewrite,no_nonce_no_replay_cache,300,0,0,credential signature,bad_signature
+pid_rewrite,no_signature_check,300,0,0,credential signature,cumulative_binding_mismatch
+pid_rewrite,no_status_check,300,0,0,credential signature,bad_signature
+pid_rewrite,no_transaction_binding,300,0,0,credential signature,bad_signature
+replay_same_payment,full,300,0,0,nonce + replay cache,replay
+replay_same_payment,no_audience_binding,300,0,0,nonce + replay cache,replay
+replay_same_payment,no_commitment_check,300,0,0,nonce + replay cache,replay
+replay_same_payment,no_cumulative_check,300,0,0,nonce + replay cache,replay
+replay_same_payment,no_freshness,300,0,0,nonce + replay cache,replay
+replay_same_payment,no_nonce_no_replay_cache,300,300,1,nonce + replay cache,ok
+replay_same_payment,no_signature_check,300,0,0,nonce + replay cache,replay
+replay_same_payment,no_status_check,300,0,0,nonce + replay cache,replay
+replay_same_payment,no_transaction_binding,300,0,0,nonce + replay cache,replay
+revoked_issuer_key,full,300,0,0,status / revocation,revoked_key
+revoked_issuer_key,no_audience_binding,300,0,0,status / revocation,revoked_key
+revoked_issuer_key,no_commitment_check,300,0,0,status / revocation,revoked_key
+revoked_issuer_key,no_cumulative_check,300,0,0,status / revocation,revoked_key
+revoked_issuer_key,no_freshness,300,0,0,status / revocation,revoked_key
+revoked_issuer_key,no_nonce_no_replay_cache,300,0,0,status / revocation,revoked_key
+revoked_issuer_key,no_signature_check,300,0,0,status / revocation,revoked_key
+revoked_issuer_key,no_status_check,300,300,1,status / revocation,ok
+revoked_issuer_key,no_transaction_binding,300,0,0,status / revocation,revoked_key
+signature_bitflip,full,300,0,0,credential signature,bad_signature
+signature_bitflip,no_audience_binding,300,0,0,credential signature,bad_signature
+signature_bitflip,no_commitment_check,300,0,0,credential signature,bad_signature
+signature_bitflip,no_cumulative_check,300,0,0,credential signature,bad_signature
+signature_bitflip,no_freshness,300,0,0,credential signature,bad_signature
+signature_bitflip,no_nonce_no_replay_cache,300,0,0,credential signature,bad_signature
+signature_bitflip,no_signature_check,300,300,1,credential signature,ok
+signature_bitflip,no_status_check,300,0,0,credential signature,bad_signature
+signature_bitflip,no_transaction_binding,300,0,0,credential signature,bad_signature
+unknown_schema,full,300,0,0,schema versioning,unknown_schema
+unknown_schema,no_audience_binding,300,0,0,schema versioning,unknown_schema
+unknown_schema,no_commitment_check,300,0,0,schema versioning,unknown_schema
+unknown_schema,no_cumulative_check,300,0,0,schema versioning,unknown_schema
+unknown_schema,no_freshness,300,0,0,schema versioning,unknown_schema
+unknown_schema,no_nonce_no_replay_cache,300,0,0,schema versioning,unknown_schema
+unknown_schema,no_signature_check,300,0,0,schema versioning,unknown_schema
+unknown_schema,no_status_check,300,0,0,schema versioning,unknown_schema
+unknown_schema,no_transaction_binding,300,0,0,schema versioning,unknown_schema
+version_downgrade,full,300,0,0,version check,unknown_version
+version_downgrade,no_audience_binding,300,0,0,version check,unknown_version
+version_downgrade,no_commitment_check,300,0,0,version check,unknown_version
+version_downgrade,no_cumulative_check,300,0,0,version check,unknown_version
+version_downgrade,no_freshness,300,0,0,version check,unknown_version
+version_downgrade,no_nonce_no_replay_cache,300,0,0,version check,unknown_version
+version_downgrade,no_signature_check,300,0,0,version check,unknown_version
+version_downgrade,no_status_check,300,0,0,version check,unknown_version
+version_downgrade,no_transaction_binding,300,0,0,version check,unknown_version
+withhold_claims,full,300,300,1,accepted by design (decision layer),ok
+withhold_claims,no_audience_binding,300,300,1,accepted by design (decision layer),ok
+withhold_claims,no_commitment_check,300,300,1,accepted by design (decision layer),ok
+withhold_claims,no_cumulative_check,300,300,1,accepted by design (decision layer),ok
+withhold_claims,no_freshness,300,300,1,accepted by design (decision layer),ok
+withhold_claims,no_nonce_no_replay_cache,300,300,1,accepted by design (decision layer),ok
+withhold_claims,no_signature_check,300,300,1,accepted by design (decision layer),ok
+withhold_claims,no_status_check,300,300,1,accepted by design (decision layer),ok
+withhold_claims,no_transaction_binding,300,300,1,accepted by design (decision layer),ok

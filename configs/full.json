@@ -1,0 +1,78 @@
+{
+  "name": "full",
+  "seed": 1,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "seeds_agentic": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "seeds_e9": [
+    1,
+    2,
+    3
+  ],
+  "synthetic_size": 240000,
+  "agentic_size": 200000,
+  "e0_instances": 3000,
+  "e0_atomic_trials": 50,
+  "e0_box_rows": 300,
+  "e1_datasets": [
+    "ieee_cis",
+    "baf",
+    "synthetic"
+  ],
+  "e1_learners": [
+    "lightgbm",
+    "xgboost",
+    "mlp"
+  ],
+  "mlp_train_rows": 200000,
+  "e2_datasets": [
+    "synthetic",
+    "ieee_cis",
+    "baf"
+  ],
+  "e2_exact_legit": 400,
+  "e2_exact_fraud": 150,
+  "max_legit_repair": 20000,
+  "max_fraud_attack": 3000,
+  "e3_train_rows": 1500000,
+  "e3_atomic_trials": 40,
+  "e5_subscriptions": 4000,
+  "e5_payments": 12,
+  "e6_payments": 2000,
+  "e6_repair_queries": 300,
+  "e7_base_payments": 300,
+  "e8_datasets": [
+    "baf",
+    "ieee_cis"
+  ],
+  "e8_fraud_attack": 1500,
+  "e9_shares": [
+    0.0,
+    0.1,
+    0.3,
+    0.5,
+    0.7
+  ],
+  "e13_claims": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "e13_queries": 100,
+  "max_fraud_attack_repair": 300
+}

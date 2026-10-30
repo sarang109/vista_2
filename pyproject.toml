@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vista2"
+version = "2.0.0"
+description = "VISTA v2: strategy-proof receiver decisions over attested evidence for agentic and real-time payments (research artifact)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "pandas>=2.1",
+  "pyarrow>=14",
+  "scikit-learn>=1.4",
+  "lightgbm>=4.3",
+  "xgboost>=2.0",
+  "cryptography>=42",
+  "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+data = ["kaggle>=1.6"]
+
+[project.scripts]
+vista2-run = "vista2.run_all:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

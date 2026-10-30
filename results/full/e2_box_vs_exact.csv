@@ -1,0 +1,4 @@
+repair,auc,legit_held,fraud_accepted,seed,n_legit,n_fraud,model_calls
+exact_full_repair,0.772292,0.0475,0.666667,1,400,150,118102032
+box_full_repair,0.444083,0.025,0.993333,1,400,150,118102032
+unrepaired,0.913083,0.0525,0.373333,1,400,150,118102032

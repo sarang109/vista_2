@@ -1,0 +1,266 @@
+[21:08:46] run full: steps e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e13
+[21:08:46] e0: theory checks (Theorems 1-5, Corollary 1, Algorithms 2b and 3)
+[21:08:50] e0: ok in 4.1 s
+[21:08:50] e1: evaluation gap on real data
+[21:08:50]   e1: ieee_cis not available, skipped
+[21:09:03]   e1 baf lightgbm seed 1: truthful 0.419 full 1.000
+[21:09:16]   e1 baf lightgbm seed 2: truthful 0.418 full 1.000
+[21:09:26]   e1 baf lightgbm seed 3: truthful 0.417 full 1.000
+[21:09:38]   e1 baf lightgbm seed 4: truthful 0.420 full 1.000
+[21:09:48]   e1 baf lightgbm seed 5: truthful 0.429 full 1.000
+[21:09:56]   e1 baf xgboost seed 1: truthful 0.429 full 1.000
+[21:10:03]   e1 baf xgboost seed 2: truthful 0.428 full 1.000
+[21:10:11]   e1 baf xgboost seed 3: truthful 0.425 full 1.000
+[21:10:19]   e1 baf xgboost seed 4: truthful 0.421 full 1.000
+[21:10:27]   e1 baf xgboost seed 5: truthful 0.420 full 1.000
+[21:10:31]   e1 baf mlp seed 1: truthful 0.548 full 1.000
+[21:10:35]   e1 baf mlp seed 2: truthful 0.731 full 1.000
+[21:10:41]   e1 baf mlp seed 3: truthful 0.570 full 1.000
+[21:10:45]   e1 baf mlp seed 4: truthful 0.581 full 1.000
+[21:10:49]   e1 baf mlp seed 5: truthful 0.583 full 1.000
+[21:10:52]   e1 synthetic lightgbm seed 1: truthful 0.410 full 0.880
+[21:10:55]   e1 synthetic lightgbm seed 2: truthful 0.400 full 0.875
+[21:10:58]   e1 synthetic lightgbm seed 3: truthful 0.404 full 0.875
+[21:11:01]   e1 synthetic lightgbm seed 4: truthful 0.403 full 0.875
+[21:11:04]   e1 synthetic lightgbm seed 5: truthful 0.408 full 0.878
+[21:11:05]   e1 synthetic xgboost seed 1: truthful 0.402 full 0.862
+[21:11:07]   e1 synthetic xgboost seed 2: truthful 0.404 full 0.865
+[21:11:08]   e1 synthetic xgboost seed 3: truthful 0.410 full 0.862
+[21:11:09]   e1 synthetic xgboost seed 4: truthful 0.402 full 0.863
+[21:11:11]   e1 synthetic xgboost seed 5: truthful 0.402 full 0.886
+[21:11:13]   e1 synthetic mlp seed 1: truthful 0.436 full 0.795
+[21:11:15]   e1 synthetic mlp seed 2: truthful 0.423 full 0.745
+[21:11:19]   e1 synthetic mlp seed 3: truthful 0.420 full 0.780
+[21:11:21]   e1 synthetic mlp seed 4: truthful 0.415 full 0.765
+[21:11:24]   e1 synthetic mlp seed 5: truthful 0.424 full 0.787
+[21:11:24] e1: ok in 153.3 s
+[21:11:24] e2: cost of each defence, operating curves
+[21:11:26]   e2 synthetic naive seed 1: auc 0.907 truthful 0.405 full 0.896
+[21:11:29]   e2 synthetic naive seed 2: auc 0.907 truthful 0.407 full 0.900
+[21:11:32]   e2 synthetic naive seed 3: auc 0.907 truthful 0.413 full 0.898
+[21:11:34]   e2 synthetic naive seed 4: auc 0.907 truthful 0.406 full 0.888
+[21:11:37]   e2 synthetic naive seed 5: auc 0.907 truthful 0.405 full 0.896
+[21:11:40]   e2 synthetic unconstrained seed 1: auc 0.907 truthful 0.410 full 0.880
+[21:11:42]   e2 synthetic unconstrained seed 2: auc 0.907 truthful 0.400 full 0.875
+[21:11:45]   e2 synthetic unconstrained seed 3: auc 0.907 truthful 0.404 full 0.875
+[21:11:48]   e2 synthetic unconstrained seed 4: auc 0.907 truthful 0.403 full 0.875
+[21:11:51]   e2 synthetic unconstrained seed 5: auc 0.908 truthful 0.408 full 0.878
+[21:11:54]   e2 synthetic monotone_w seed 1: auc 0.907 truthful 0.402 full 0.801
+[21:11:57]   e2 synthetic monotone_w seed 2: auc 0.907 truthful 0.413 full 0.811
+[21:12:00]   e2 synthetic monotone_w seed 3: auc 0.906 truthful 0.410 full 0.814
+[21:12:03]   e2 synthetic monotone_w seed 4: auc 0.907 truthful 0.406 full 0.808
+[21:12:07]   e2 synthetic monotone_w seed 5: auc 0.907 truthful 0.407 full 0.815
+[21:13:23]   e2 synthetic repaired_w seed 1: auc 0.887 truthful 0.505 full 0.900
+[21:14:42]   e2 synthetic repaired_w seed 2: auc 0.886 truthful 0.501 full 0.890
+[21:16:06]   e2 synthetic repaired_w seed 3: auc 0.887 truthful 0.515 full 0.896
+[21:17:17]   e2 synthetic repaired_w seed 4: auc 0.887 truthful 0.508 full 0.886
+[21:18:28]   e2 synthetic repaired_w seed 5: auc 0.887 truthful 0.492 full 0.876
+[21:19:05]   e2 synthetic repaired_full seed 1: auc 0.467 truthful 0.987 full 0.987
+[21:22:39]   e2 synthetic repaired_full seed 2: auc 0.490 truthful 0.986 full 0.986
+[21:23:20]   e2 synthetic repaired_full seed 3: auc 0.439 truthful 0.986 full 0.986
+[21:23:53]   e2 synthetic repaired_full seed 4: auc 0.461 truthful 0.986 full 0.986
+[21:24:26]   e2 synthetic repaired_full seed 5: auc 0.481 truthful 0.988 full 0.988
+[21:24:29]   e2 synthetic control_typed seed 1: auc 0.898 truthful 0.428 full 0.428
+[21:24:33]   e2 synthetic control_typed seed 2: auc 0.899 truthful 0.426 full 0.426
+[21:24:36]   e2 synthetic control_typed seed 3: auc 0.898 truthful 0.426 full 0.426
+[21:24:39]   e2 synthetic control_typed seed 4: auc 0.898 truthful 0.430 full 0.430
+[21:24:42]   e2 synthetic control_typed seed 5: auc 0.898 truthful 0.420 full 0.420
+[21:24:42]   e2: ieee_cis not available, skipped
+[21:24:51]   e2 baf naive seed 1: auc 0.892 truthful 0.419 full 1.000
+[21:25:01]   e2 baf naive seed 2: auc 0.892 truthful 0.418 full 1.000
+[21:25:09]   e2 baf naive seed 3: auc 0.892 truthful 0.417 full 1.000
+[21:25:19]   e2 baf naive seed 4: auc 0.892 truthful 0.420 full 1.000
+[21:25:27]   e2 baf naive seed 5: auc 0.892 truthful 0.429 full 1.000
+[21:25:36]   e2 baf monotone_w seed 1: auc 0.891 truthful 0.408 full 1.000
+[21:25:45]   e2 baf monotone_w seed 2: auc 0.891 truthful 0.422 full 1.000
+[21:25:54]   e2 baf monotone_w seed 3: auc 0.891 truthful 0.419 full 1.000
+[21:26:04]   e2 baf monotone_w seed 4: auc 0.891 truthful 0.421 full 1.000
+[21:26:15]   e2 baf monotone_w seed 5: auc 0.890 truthful 0.423 full 1.000
+[21:26:39]   e2 baf repaired_w seed 1: auc 0.892 truthful 0.405 full 1.000
+[21:27:06]   e2 baf repaired_w seed 2: auc 0.891 truthful 0.424 full 1.000
+[21:27:28]   e2 baf repaired_w seed 3: auc 0.893 truthful 0.418 full 1.000
+[21:27:52]   e2 baf repaired_w seed 4: auc 0.893 truthful 0.420 full 1.000
+[21:28:14]   e2 baf repaired_w seed 5: auc 0.892 truthful 0.424 full 1.000
+[21:33:25] run full: steps e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e13
+[21:33:25] e2: cost of each defence, operating curves
+[21:33:28]   e2 synthetic naive seed 1: auc 0.907 truthful 0.405 full 0.896
+[21:33:30]   e2 synthetic naive seed 2: auc 0.907 truthful 0.407 full 0.900
+[21:33:33]   e2 synthetic naive seed 3: auc 0.907 truthful 0.413 full 0.898
+[21:33:36]   e2 synthetic naive seed 4: auc 0.907 truthful 0.406 full 0.888
+[21:33:38]   e2 synthetic naive seed 5: auc 0.907 truthful 0.405 full 0.896
+[21:33:41]   e2 synthetic unconstrained seed 1: auc 0.907 truthful 0.410 full 0.880
+[21:33:44]   e2 synthetic unconstrained seed 2: auc 0.907 truthful 0.400 full 0.875
+[21:33:47]   e2 synthetic unconstrained seed 3: auc 0.907 truthful 0.404 full 0.875
+[21:33:49]   e2 synthetic unconstrained seed 4: auc 0.907 truthful 0.403 full 0.875
+[21:33:52]   e2 synthetic unconstrained seed 5: auc 0.908 truthful 0.408 full 0.878
+[21:33:55]   e2 synthetic monotone_w seed 1: auc 0.907 truthful 0.402 full 0.801
+[21:33:59]   e2 synthetic monotone_w seed 2: auc 0.907 truthful 0.413 full 0.811
+[21:34:02]   e2 synthetic monotone_w seed 3: auc 0.906 truthful 0.410 full 0.814
+[21:34:05]   e2 synthetic monotone_w seed 4: auc 0.907 truthful 0.406 full 0.808
+[21:34:08]   e2 synthetic monotone_w seed 5: auc 0.907 truthful 0.407 full 0.815
+[21:34:36]   e2 synthetic repaired_w seed 1: auc 0.884 truthful 0.523 full 0.910
+[21:35:06]   e2 synthetic repaired_w seed 2: auc 0.875 truthful 0.533 full 0.890
+[21:35:36]   e2 synthetic repaired_w seed 3: auc 0.885 truthful 0.527 full 0.923
+[21:36:03]   e2 synthetic repaired_w seed 4: auc 0.887 truthful 0.500 full 0.857
+[21:36:29]   e2 synthetic repaired_w seed 5: auc 0.876 truthful 0.493 full 0.890
+[21:36:43]   e2 synthetic repaired_full seed 1: auc 0.463 truthful 0.987 full 0.987
+[21:39:41]   e2 synthetic repaired_full seed 2: auc 0.521 truthful 0.987 full 0.987
+[21:39:57]   e2 synthetic repaired_full seed 3: auc 0.410 truthful 0.983 full 0.983
+[21:40:10]   e2 synthetic repaired_full seed 4: auc 0.480 truthful 0.983 full 0.983
+[21:40:23]   e2 synthetic repaired_full seed 5: auc 0.492 truthful 0.983 full 0.983
+[21:40:26]   e2 synthetic control_typed seed 1: auc 0.898 truthful 0.428 full 0.428
+[21:40:30]   e2 synthetic control_typed seed 2: auc 0.899 truthful 0.426 full 0.426
+[21:40:33]   e2 synthetic control_typed seed 3: auc 0.898 truthful 0.426 full 0.426
+[21:40:36]   e2 synthetic control_typed seed 4: auc 0.898 truthful 0.430 full 0.430
+[21:40:39]   e2 synthetic control_typed seed 5: auc 0.898 truthful 0.420 full 0.420
+[21:40:39]   e2: ieee_cis not available, skipped
+[21:40:48]   e2 baf naive seed 1: auc 0.892 truthful 0.419 full 1.000
+[21:40:57]   e2 baf naive seed 2: auc 0.892 truthful 0.418 full 1.000
+[21:41:05]   e2 baf naive seed 3: auc 0.892 truthful 0.417 full 1.000
+[21:41:13]   e2 baf naive seed 4: auc 0.892 truthful 0.420 full 1.000
+[21:41:21]   e2 baf naive seed 5: auc 0.892 truthful 0.429 full 1.000
+[21:41:30]   e2 baf monotone_w seed 1: auc 0.891 truthful 0.408 full 1.000
+[21:41:38]   e2 baf monotone_w seed 2: auc 0.891 truthful 0.422 full 1.000
+[21:41:47]   e2 baf monotone_w seed 3: auc 0.891 truthful 0.419 full 1.000
+[21:41:55]   e2 baf monotone_w seed 4: auc 0.891 truthful 0.421 full 1.000
+[21:42:06]   e2 baf monotone_w seed 5: auc 0.890 truthful 0.423 full 1.000
+[21:42:14]   e2 baf repaired_w seed 1: auc 0.885 truthful 0.437 full 1.000
+[21:42:22]   e2 baf repaired_w seed 2: auc 0.907 truthful 0.407 full 1.000
+[21:42:30]   e2 baf repaired_w seed 3: auc 0.878 truthful 0.453 full 1.000
+[21:42:37]   e2 baf repaired_w seed 4: auc 0.904 truthful 0.370 full 1.000
+[21:42:45]   e2 baf repaired_w seed 5: auc 0.904 truthful 0.383 full 1.000
+[21:43:44]   e2 baf repaired_full seed 1: auc 0.661 truthful 0.933 full 0.933
+[21:44:52]   e2 baf repaired_full seed 2: auc 0.624 truthful 0.957 full 0.957
+[21:45:46]   e2 baf repaired_full seed 3: auc 0.693 truthful 0.910 full 0.910
+[21:46:46]   e2 baf repaired_full seed 4: auc 0.690 truthful 0.910 full 0.910
+[21:47:42]   e2 baf repaired_full seed 5: auc 0.688 truthful 0.893 full 0.893
+[21:47:45]   e2 baf control_typed seed 1: auc 0.775 truthful 0.631 full 0.631
+[21:47:49]   e2 baf control_typed seed 2: auc 0.773 truthful 0.640 full 0.640
+[21:47:53]   e2 baf control_typed seed 3: auc 0.774 truthful 0.634 full 0.634
+[21:47:57]   e2 baf control_typed seed 4: auc 0.774 truthful 0.647 full 0.647
+[21:48:01]   e2 baf control_typed seed 5: auc 0.774 truthful 0.651 full 0.651
+[21:48:01] e2: ok in 876.3 s
+[21:48:01] e3: splitting and the cumulative claim (PaySim)
+[21:48:03]   e3: 4963336 payments, test frauds 4250
+[21:48:11]   e3 stateless_cap: K=1 value 0.096 K=64 value 1.000, max exposure 10000000
+[21:48:11]   e3 cumulative_cap: K=1 value 0.096 K=64 value 0.294, max exposure 800992
+[21:48:42]   e3 stateless_model: K=1 value 0.163 K=64 value 1.000, max exposure 10000000
+[21:48:50]   e3 cumulative_model: K=1 value 0.090 K=64 value 0.277, max exposure 919139
+[21:48:50] e3: ok in 48.6 s
+[21:48:50] e4: agentic adversaries, Gate B
+[21:49:10]   e4 seed 1 naive: truthful 0.321, withhold_split 0.578, persuasive_text 0.623, merchant_retry 0.520, chain_strip 0.518, full 0.826
+[21:49:16]   e4 seed 1 unconstrained: truthful 0.323, withhold_split 0.570, persuasive_text 0.616, merchant_retry 0.522, chain_strip 0.494, full 0.827
+[21:49:23]   e4 seed 1 monotone_w: truthful 0.323, withhold_split 0.403, persuasive_text 0.622, merchant_retry 0.509, chain_strip 0.323, full 0.805
+[21:49:24]   e4 seed 1 control_typed: truthful 0.414, withhold_split 0.414, persuasive_text 0.414, merchant_retry 0.414, chain_strip 0.414, full 0.414
+[21:49:26]   e4 seed 1 control_typed_text_hold: truthful 0.375, withhold_split 0.375, persuasive_text 0.435, merchant_retry 0.375, chain_strip 0.375, full 0.435
+[21:49:42]   e4 seed 2 naive: truthful 0.324, withhold_split 0.577, persuasive_text 0.612, merchant_retry 0.513, chain_strip 0.514, full 0.830
+[21:49:47]   e4 seed 2 unconstrained: truthful 0.323, withhold_split 0.563, persuasive_text 0.622, merchant_retry 0.496, chain_strip 0.488, full 0.826
+[21:49:52]   e4 seed 2 monotone_w: truthful 0.325, withhold_split 0.403, persuasive_text 0.622, merchant_retry 0.491, chain_strip 0.325, full 0.790
+[21:49:52]   e4 seed 2 control_typed: truthful 0.420, withhold_split 0.420, persuasive_text 0.420, merchant_retry 0.420, chain_strip 0.420, full 0.420
+[21:49:55]   e4 seed 2 control_typed_text_hold: truthful 0.380, withhold_split 0.380, persuasive_text 0.442, merchant_retry 0.380, chain_strip 0.380, full 0.442
+[21:50:10]   e4 seed 3 naive: truthful 0.320, withhold_split 0.570, persuasive_text 0.609, merchant_retry 0.513, chain_strip 0.516, full 0.826
+[21:50:15]   e4 seed 3 unconstrained: truthful 0.318, withhold_split 0.569, persuasive_text 0.621, merchant_retry 0.511, chain_strip 0.499, full 0.825
+[21:50:21]   e4 seed 3 monotone_w: truthful 0.324, withhold_split 0.397, persuasive_text 0.609, merchant_retry 0.508, chain_strip 0.324, full 0.792
+[21:50:21]   e4 seed 3 control_typed: truthful 0.418, withhold_split 0.418, persuasive_text 0.418, merchant_retry 0.418, chain_strip 0.418, full 0.418
+[21:50:24]   e4 seed 3 control_typed_text_hold: truthful 0.378, withhold_split 0.378, persuasive_text 0.438, merchant_retry 0.378, chain_strip 0.378, full 0.438
+[21:50:39]   e4 seed 4 naive: truthful 0.317, withhold_split 0.570, persuasive_text 0.619, merchant_retry 0.501, chain_strip 0.512, full 0.827
+[21:50:44]   e4 seed 4 unconstrained: truthful 0.323, withhold_split 0.555, persuasive_text 0.612, merchant_retry 0.508, chain_strip 0.493, full 0.823
+[21:50:51]   e4 seed 4 monotone_w: truthful 0.333, withhold_split 0.405, persuasive_text 0.623, merchant_retry 0.509, chain_strip 0.333, full 0.801
+[21:50:52]   e4 seed 4 control_typed: truthful 0.417, withhold_split 0.417, persuasive_text 0.417, merchant_retry 0.417, chain_strip 0.417, full 0.417
+[21:50:55]   e4 seed 4 control_typed_text_hold: truthful 0.379, withhold_split 0.379, persuasive_text 0.439, merchant_retry 0.379, chain_strip 0.379, full 0.439
+[21:51:10]   e4 seed 5 naive: truthful 0.319, withhold_split 0.575, persuasive_text 0.614, merchant_retry 0.514, chain_strip 0.518, full 0.824
+[21:51:15]   e4 seed 5 unconstrained: truthful 0.316, withhold_split 0.561, persuasive_text 0.615, merchant_retry 0.514, chain_strip 0.489, full 0.824
+[21:51:21]   e4 seed 5 monotone_w: truthful 0.326, withhold_split 0.401, persuasive_text 0.615, merchant_retry 0.509, chain_strip 0.326, full 0.798
+[21:51:22]   e4 seed 5 control_typed: truthful 0.414, withhold_split 0.414, persuasive_text 0.414, merchant_retry 0.414, chain_strip 0.414, full 0.414
+[21:51:24]   e4 seed 5 control_typed_text_hold: truthful 0.375, withhold_split 0.375, persuasive_text 0.435, merchant_retry 0.375, chain_strip 0.375, full 0.435
+[21:51:24] e4: ok in 154.3 s
+[21:51:24] e5: repeated agent payments
+[21:51:24]   e5: empirical prior over 221 chain profiles
+[21:51:27] e5: ok in 2.4 s
+[21:51:27] e6: payment-path overhead
+[21:51:37]   e6: verify p99 0.264 ms, receiver p99 0.819 ms, capsule 1635 bytes
+[21:51:37] e6: ok in 10.2 s
+[21:51:37] e7: binding-layer attack suite
+[21:51:45]   e7: 0 of 7793 targeted mutations accepted (full verifier)
+[21:51:45] e7: ok in 8.5 s
+[21:51:45] e8: typing sensitivity
+[21:51:57]   e8 baf baseline: ct auc 0.769, cost 0.120
+[21:52:10]   e8 baf customer_age -> T: ct auc 0.787, cost 0.102
+[21:52:22]   e8 baf current_address_months_count -> T: ct auc 0.796, cost 0.092
+[21:52:33]   e8 baf prev_address_months_count -> T: ct auc 0.794, cost 0.095
+[21:52:43]   e8 baf days_since_request -> T: ct auc 0.772, cost 0.116
+[21:52:54]   e8 baf device_distinct_emails_8w -> F: ct auc 0.764, cost 0.125
+[21:53:04]   e8 baf device_fraud_count -> F: ct auc 0.769, cost 0.120
+[21:53:15]   e8 baf foreign_request -> F: ct auc 0.769, cost 0.120
+[21:53:26]   e8 baf has_other_cards -> F: ct auc 0.750, cost 0.140
+[21:53:37]   e8 baf verify_income_employment: ct auc 0.791, cost 0.098
+[21:53:47]   e8 baf verify_identity_fields: ct auc 0.839, cost 0.049
+[21:54:00]   e8 baf verify_all_self_reported: ct auc 0.859, cost 0.029
+[21:54:00]   e8: ieee_cis not available, skipped
+[21:54:00] e8: ok in 134.5 s
+[21:54:00] e9: rollout-stage sweep
+[21:54:34]   e9 share 0.0: done
+[21:55:07]   e9 share 0.1: done
+[21:55:40]   e9 share 0.3: done
+[21:56:13]   e9 share 0.5: done
+[21:56:44]   e9 share 0.7: done
+[21:56:44] e9: ok in 164.4 s
+[21:56:44] e10: measured comparison of designs
+[21:57:07]   e10 seed 1 raw_evidence: held 0.049 truthful 0.399 full 0.835
+[21:57:18]   e10 seed 1 sdjwt_unconstrained: held 0.049 truthful 0.398 full 0.838
+[21:57:18]   e10 seed 1 vista_v2: held 0.050 truthful 0.470 full 0.470
+[21:57:26]   e10 seed 1 opaque_score: held 0.049 truthful 0.397 full 0.811
+[21:57:26]   e10 seed 1 policy_token: held 0.040 truthful 0.929 full 0.986
+[21:57:26]   e10 seed 1 vista_v1: held 0.040 truthful 0.929 full 0.986
+[21:57:37]   e10 seed 1 vista_v1_model: held 0.040 truthful 0.421 full 0.737
+[21:57:49]   e10 seed 1 ap2_mandate_plus_model: held 0.051 truthful 0.417 full 0.732
+[21:58:11]   e10 seed 2 raw_evidence: held 0.049 truthful 0.401 full 0.839
+[21:58:19]   e10 seed 2 sdjwt_unconstrained: held 0.050 truthful 0.401 full 0.833
+[21:58:20]   e10 seed 2 vista_v2: held 0.051 truthful 0.470 full 0.470
+[21:58:29]   e10 seed 2 opaque_score: held 0.049 truthful 0.399 full 0.825
+[21:58:29]   e10 seed 2 policy_token: held 0.040 truthful 0.929 full 0.986
+[21:58:29]   e10 seed 2 vista_v1: held 0.040 truthful 0.929 full 0.986
+[21:58:38]   e10 seed 2 vista_v1_model: held 0.041 truthful 0.422 full 0.724
+[21:58:48]   e10 seed 2 ap2_mandate_plus_model: held 0.052 truthful 0.418 full 0.718
+[21:59:08]   e10 seed 3 raw_evidence: held 0.050 truthful 0.399 full 0.836
+[21:59:17]   e10 seed 3 sdjwt_unconstrained: held 0.050 truthful 0.395 full 0.836
+[21:59:17]   e10 seed 3 vista_v2: held 0.051 truthful 0.471 full 0.471
+[21:59:25]   e10 seed 3 opaque_score: held 0.049 truthful 0.402 full 0.817
+[21:59:25]   e10 seed 3 policy_token: held 0.040 truthful 0.929 full 0.986
+[21:59:26]   e10 seed 3 vista_v1: held 0.040 truthful 0.929 full 0.986
+[21:59:35]   e10 seed 3 vista_v1_model: held 0.041 truthful 0.420 full 0.731
+[21:59:45]   e10 seed 3 ap2_mandate_plus_model: held 0.051 truthful 0.417 full 0.726
+[22:00:06]   e10 seed 4 raw_evidence: held 0.051 truthful 0.396 full 0.836
+[22:00:14]   e10 seed 4 sdjwt_unconstrained: held 0.050 truthful 0.401 full 0.832
+[22:00:14]   e10 seed 4 vista_v2: held 0.051 truthful 0.472 full 0.472
+[22:00:23]   e10 seed 4 opaque_score: held 0.050 truthful 0.397 full 0.806
+[22:00:23]   e10 seed 4 policy_token: held 0.040 truthful 0.929 full 0.986
+[22:00:23]   e10 seed 4 vista_v1: held 0.040 truthful 0.929 full 0.986
+[22:00:32]   e10 seed 4 vista_v1_model: held 0.040 truthful 0.419 full 0.728
+[22:00:41]   e10 seed 4 ap2_mandate_plus_model: held 0.051 truthful 0.414 full 0.722
+[22:01:01]   e10 seed 5 raw_evidence: held 0.049 truthful 0.397 full 0.833
+[22:01:10]   e10 seed 5 sdjwt_unconstrained: held 0.049 truthful 0.394 full 0.834
+[22:01:11]   e10 seed 5 vista_v2: held 0.052 truthful 0.468 full 0.468
+[22:01:19]   e10 seed 5 opaque_score: held 0.049 truthful 0.400 full 0.811
+[22:01:19]   e10 seed 5 policy_token: held 0.040 truthful 0.929 full 0.986
+[22:01:19]   e10 seed 5 vista_v1: held 0.040 truthful 0.929 full 0.986
+[22:01:29]   e10 seed 5 vista_v1_model: held 0.041 truthful 0.418 full 0.732
+[22:01:38]   e10 seed 5 ap2_mandate_plus_model: held 0.052 truthful 0.411 full 0.725
+[22:01:38] e10: ok in 294.0 s
+[22:01:38] e11: attacker strength and transfer
+[22:01:46]   e11 naive: truthful 0.405, coord_1_round 0.878, coord_2_rounds 0.896, coord_3_rounds 0.896, exhaustive_w_plus_2_rounds 0.896, surrogate_lightgbm_30pct 0.864, surrogate_xgboost_30pct 0.856
+[22:01:55]   e11 unconstrained: truthful 0.410, coord_1_round 0.857, coord_2_rounds 0.880, coord_3_rounds 0.883, exhaustive_w_plus_2_rounds 0.879, surrogate_lightgbm_30pct 0.827, surrogate_xgboost_30pct 0.828
+[22:02:03]   e11 monotone_w: truthful 0.402, coord_1_round 0.792, coord_2_rounds 0.801, coord_3_rounds 0.801, exhaustive_w_plus_2_rounds 0.801, surrogate_lightgbm_30pct 0.765, surrogate_xgboost_30pct 0.764
+[22:02:13]   e11 control_typed: truthful 0.428, coord_1_round 0.428, coord_2_rounds 0.428, coord_3_rounds 0.428, exhaustive_w_plus_2_rounds 0.428, surrogate_lightgbm_30pct 0.428, surrogate_xgboost_30pct 0.428
+[22:02:13] e11: ok in 34.3 s
+[22:02:13] e13: repair cost against lattice size
+[22:02:13]   e13 n=3: exact 0.3 ms random, 0.2 ms worst; box 0.06 ms
+[22:02:14]   e13 n=4: exact 0.5 ms random, 0.4 ms worst; box 0.08 ms
+[22:02:15]   e13 n=5: exact 0.6 ms random, 1.2 ms worst; box 0.07 ms
+[22:02:16]   e13 n=6: exact 0.7 ms random, 4.3 ms worst; box 0.08 ms
+[22:02:17]   e13 n=7: exact 1.2 ms random, 16.2 ms worst; box 0.09 ms
+[22:02:19]   e13 n=8: exact 2.1 ms random, 62.4 ms worst; box 0.10 ms
+[22:02:20]   e13 n=9: exact 3.1 ms random, 269.6 ms worst; box 0.43 ms
+[22:02:20] e13: ok in 7.7 s
+[22:02:21] figures: 10 written
+[22:02:21] summary: SUMMARY.md written
