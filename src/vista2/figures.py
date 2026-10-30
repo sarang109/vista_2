@@ -237,10 +237,48 @@ def fig_scaling(out):
     return [_save(fig, out, "fig_e13_repair_scaling.png")]
 
 
+def fig_bounded(out):
+    rows = _load(out, "e14_bounded.csv")
+    if not rows:
+        return []
+    dsets = list(dict.fromkeys(r["dataset"] for r in rows))
+    fig, axes = plt.subplots(2, len(dsets), figsize=(4.0 * len(dsets), 6.2), squeeze=False)
+    for col, d in enumerate(dsets):
+        sub = [r for r in rows if r["dataset"] == d]
+        for row, (prefix, xlab) in enumerate((("fields_", "F fields the attacker may change"),
+                                               ("window_", "value window δ (fraction of each field's range)"))):
+            ax = axes[row][col]
+            for j, v in enumerate(dict.fromkeys(r["variant"] for r in sub)):
+                pts = [(float(r["attack"][len(prefix):]), 100 * _f(r, "fraud_accepted_attack")) for r in sub
+                       if r["variant"] == v and r["attack"].startswith(prefix) and "_window" not in r["attack"]]
+                pts.sort()
+                truth = next(100 * _f(r, "fraud_accepted_truthful") for r in sub
+                             if r["variant"] == v and r["attack"] == "truthful")
+                ax.plot([p[0] for p in pts], [p[1] for p in pts], marker="o", markersize=4, color=SERIES[j],
+                        label=v.replace("_", " "))
+                ax.axhline(truth, color=SERIES[j], linewidth=1, linestyle=(0, (2, 2)))
+            if prefix == "window_":
+                ax.set_xscale("log")
+                ax.minorticks_off()
+                ticks = sorted({p[0] for p in pts})
+                ax.set_xticks(ticks)
+                ax.set_xticklabels([f"{x:g}" for x in ticks])
+            ax.set_ylim(0, 100)
+            ax.set_xlabel(xlab)
+            if col == 0:
+                ax.set_ylabel("fraud accepted (%); dashed = truthful")
+            if row == 0:
+                ax.set_title(d.replace("_", "-"))
+    handles, labels = axes[0][0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", ncol=3, bbox_to_anchor=(0.5, -0.0))
+    fig.tight_layout()
+    return [_save(fig, out, "fig_e14_bounded_attacker.png")]
+
+
 def make_all(out) -> list[str]:
     paths = []
     for fn in (fig_defences, fig_gap, fig_splitting, fig_repeated, fig_agentic, fig_rollout, fig_comparison,
-               fig_curves, fig_scaling):
+               fig_curves, fig_scaling, fig_bounded):
         try:
             paths += fn(out)
         except Exception as e:  # a missing column should not stop the remaining figures

@@ -76,6 +76,7 @@ Outputs go to `results/<config>/`:
 | **E11** | Is the attack search tight? Does the attack need white-box access (transfer attacks)? | synthetic |
 | **E12** | Realized operating curves (fraud accepted vs legitimate held, truthful and attacked) | from E2 |
 | **E13** | How does repair cost grow with the claim lattice (64 to 262,144 points)? | synthetic lattices |
+| **E14** | Does the gap survive a bounded attacker (few fields, small value moves)? | IEEE-CIS, BAF, synthetic |
 
 Bold rows are additions beyond the original plan.
 
@@ -120,6 +121,14 @@ attacker-controlled pushes it just past 0.02), so the result does not hinge on t
 fields carry most of BAF's signal. E8 shows what would change that: if the sending bank attested the identity
 fields the cost drops to 0.049, and with all self-reported fields attested to 0.029. On the synthetic workload
 the cost is 0.009.
+
+**The gap survives a bounded attacker (E14, 3 seeds).** The default attacker may move every freely chosen
+field anywhere, so E14 limits it. On IEEE-CIS the conventional model goes from 37.1% fraud accepted to 59.8% when
+the attacker may change a single field, 66.0% with two, and 55.0% when every field may only move within 5% of its
+range of the true value (splitting into up to four parts and withholding stay allowed). On BAF a single field
+takes it from 41.8% to 75.1%. The control-typed model stays at its truthful level under every budget (39.9% on
+IEEE-CIS). The one place a weak attacker gains little is BAF with very small value moves (+4 points at a 2%
+window), because its self-reported fields matter mainly at their extremes.
 
 **Repairing a black box is not a substitute for control-typed training (E2, E13).** Repairing `W` only
 (Algorithm 2b) costs 0.025 AUC and leaves the `F` attacks open. The full safe repair is SP by construction,
@@ -176,6 +185,9 @@ claim) were accepted; withholding passes the binding layer by design and is hand
   controlled testbed, not evidence about real fraud rates.
 * **Dataset semantics.** BAF is account opening, not payments. IEEE-CIS columns are anonymised. The `W`/`F`/`T`
   typing of both is a modelling assumption, published in `docs/feature_typing.md` and stress-tested by E8.
+* **The default attacker may move every freely chosen field anywhere on its grid.** E14 bounds it (at most
+  b fields, or values within a fraction of each field's range of the truth) to show how much of the gap a
+  weaker attacker still gets.
 * **The attacker is a search, not an oracle.** Coordinate search (two rounds) gives lower bounds on attack
   success; E11 shows that exhaustive enumeration of the claim lattice finds no more on the synthetic data.
 * **Control-typed resistance holds by construction.** What the experiments measure is its accuracy cost and the

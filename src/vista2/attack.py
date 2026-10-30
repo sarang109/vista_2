@@ -37,6 +37,11 @@ class AttackConfig:
     exhaustive_w_limit: int = 0  # enumerate the W lattice exactly when its size is at most this
     only: set | None = None  # restrict to these coordinates
     name: str = "full"
+    # bounded attacker (both off by default): at most `max_f_fields` F fields change per payment, chosen
+    # greedily as the fields that lower each payment's risk most; and a completely reachable field may only
+    # move to values within a fraction `window` of its grid (by rank) around the true value
+    max_f_fields: int | None = None
+    window: float | None = None
 
 
 WITHHOLD_ONLY = AttackConfig(withhold=True, split_k=1, complete=False, relabel_steps=0, name="withholding")
@@ -167,31 +172,77 @@ def best_response(risk_fn, X: pd.DataFrame, t: TypedTable, columns, cfg: AttackC
                     cands, cps, val = [], [], []
             try_candidates(cands, cps, val)
 
-    for _ in range(max(cfg.rounds, 0)):
-        for c, kind in coords:
-            j = col[c]
-            truecol = A0[:, j]
-            cands, cps, val = [], [], []
-            if kind == "w_chain":
-                for lv in range(int(truecol.max()) + 1):
-                    cands.append(with_value(j, lv)); cps.append(parts.copy()); val.append(lv <= truecol)
-            elif kind == "w_poset":
-                cands.append(with_value(j, 0.0)); cps.append(parts.copy()); val.append(ones)
-                cands.append(with_value(j, truecol)); cps.append(parts.copy()); val.append(ones)
-            elif kind == "split":
-                for k in range(1, cfg.split_k + 1):
-                    cands.append(cur.copy()); cps.append(np.full(n, float(k))); val.append(ones)
-            elif kind == "complete":
-                for v in t.specs[c].values:
-                    cands.append(with_value(j, float(v))); cps.append(parts.copy()); val.append(ones)
-            elif kind == "step":
-                grid = np.asarray(t.specs[c].values, dtype=float)
+    def candidates(c, kind):
+        """Candidate presentations for one coordinate."""
+        j = col[c]
+        truecol = A0[:, j]
+        cands, cps, val = [], [], []
+        if kind == "w_chain":
+            for lv in range(int(truecol.max()) + 1):
+                cands.append(with_value(j, lv)); cps.append(parts.copy()); val.append(lv <= truecol)
+        elif kind == "w_poset":
+            cands.append(with_value(j, 0.0)); cps.append(parts.copy()); val.append(ones)
+            cands.append(with_value(j, truecol)); cps.append(parts.copy()); val.append(ones)
+        elif kind == "split":
+            for k in range(1, cfg.split_k + 1):
+                cands.append(cur.copy()); cps.append(np.full(n, float(k))); val.append(ones)
+        elif kind == "complete":
+            grid = np.asarray(t.specs[c].values, dtype=float)
+            if cfg.window is not None:
                 pos = np.clip(np.searchsorted(grid, truecol), 0, len(grid) - 1)
-                for dlt in range(-cfg.relabel_steps, cfg.relabel_steps + 1):
-                    if dlt == 0:
-                        continue
-                    newpos = np.clip(pos + dlt, 0, len(grid) - 1)
-                    cands.append(with_value(j, grid[newpos])); cps.append(parts.copy()); val.append(newpos != pos)
-            imp = try_candidates(cands, cps, val)
-            moved[c] += int(imp.sum())
+                reach = cfg.window * max(len(grid) - 1, 1)
+            for i, v in enumerate(grid):
+                ok = ones if cfg.window is None else np.abs(i - pos) <= reach
+                cands.append(with_value(j, float(v))); cps.append(parts.copy()); val.append(ok)
+        elif kind == "step":
+            grid = np.asarray(t.specs[c].values, dtype=float)
+            pos = np.clip(np.searchsorted(grid, truecol), 0, len(grid) - 1)
+            for dlt in range(-cfg.relabel_steps, cfg.relabel_steps + 1):
+                if dlt == 0:
+                    continue
+                newpos = np.clip(pos + dlt, 0, len(grid) - 1)
+                cands.append(with_value(j, grid[newpos])); cps.append(parts.copy()); val.append(newpos != pos)
+        return cands, cps, val
+
+    if cfg.max_f_fields is None:
+        for _ in range(max(cfg.rounds, 0)):
+            for c, kind in coords:
+                imp = try_candidates(*candidates(c, kind))
+                moved[c] += int(imp.sum())
+        return result()
+
+    # bounded attacker: withholding is the holder's free choice; F fields are spent from a budget
+    for _ in range(max(cfg.rounds, 0)):
+        for c, kind in wcoords:
+            moved[c] += int(try_candidates(*candidates(c, kind)).sum())
+    fcoords = [(c, kind) for c, kind in coords if not kind.startswith("w_")]
+    used = np.zeros((n, len(fcoords)), dtype=bool)
+    for _ in range(min(cfg.max_f_fields, len(fcoords))):
+        # best achievable risk per (field, row) from the current presentation, without applying it
+        best_by_field = np.full((len(fcoords), n), np.inf)
+        choice = []
+        for f, (c, kind) in enumerate(fcoords):
+            cands, cps, val = candidates(c, kind)
+            if not cands:
+                choice.append(None)
+                continue
+            r = ev(np.concatenate(cands), np.concatenate(cps), np.tile(amount, len(cands)),
+                   None if cum is None else np.tile(cum, len(cands))).reshape(len(cands), n)
+            r = np.where(np.stack(val) & ~used[:, f][None, :], r, np.inf)
+            k = r.argmin(0)
+            best_by_field[f] = r[k, np.arange(n)]
+            choice.append((cands, cps, k))
+        f_star = best_by_field.argmin(0)
+        rb = best_by_field[f_star, np.arange(n)]
+        imp = rb < best - 1e-12
+        for f in np.unique(f_star[imp]):
+            rows = np.flatnonzero(imp & (f_star == f))
+            cands, cps, k = choice[f]
+            cur[rows] = np.stack(cands)[k[rows], rows]
+            parts[rows] = np.stack(cps)[k[rows], rows]
+            used[rows, f] = True
+            moved[fcoords[f][0]] += len(rows)
+        best = np.where(imp, rb, best)
+        if not imp.any():
+            break
     return result()

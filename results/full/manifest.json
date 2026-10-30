@@ -76,7 +76,12 @@
       9
     ],
     "e13_queries": 100,
-    "max_fraud_attack_repair": 300
+    "max_fraud_attack_repair": 300,
+    "seeds_e14": [
+      1,
+      2,
+      3
+    ]
   },
   "versions": {
     "python": "3.14.7",
@@ -221,6 +226,16 @@
         "e8_typing_sensitivity.csv": "52ee99a2759157a9d9f26d87246ff1ed7a3ed9b1791dda5f739d1b1512adbad0"
       },
       "seconds": 432.4
+    },
+    {
+      "step": "e14",
+      "description": "bounded attacker",
+      "status": "ok",
+      "files": {
+        "e14_bounded_runs.csv": "b2b8def5cb76a07c89bc86043de06e4cedf2882d65d3350d8ca748a7c2568474",
+        "e14_bounded.csv": "9564033b0d903a1c3b114af510c08e28d0efe54dc08e1d5df63eb2e08b294e9a"
+      },
+      "seconds": 1283.1
     }
   ]
 }

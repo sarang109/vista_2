@@ -32,6 +32,7 @@ STEPS = {
     "e10": ("e10_comparison", "measured comparison of designs"),
     "e11": ("e11_attacker", "attacker strength and transfer"),
     "e13": ("e13_repair_scaling", "repair cost against lattice size"),
+    "e14": ("e14_bounded", "bounded attacker"),
 }
 
 

@@ -17,6 +17,7 @@ Python 3.14.7, LightGBM 4.7.0, XGBoost 3.4.1, scikit-learn 1.9.1, 8 CPUs (arm64)
 | e1 evaluation gap on real data | ok | 500.5 |
 | e2 cost of each defence, operating curves | ok | 3871.1 |
 | e8 typing sensitivity | ok | 432.4 |
+| e14 bounded attacker | ok | 1283.1 |
 
 ## E0 theory checks
 
@@ -352,6 +353,22 @@ Zero-leakage feasible (Theorem 4): P1_three_branch False, P2_two_branch False, P
 | 9 | 262144 | random | 3.12 | 2105 | 0.43 | 0.017 |
 | 9 | 262144 | nothing_shown | 269.61 | 262144 | 1.37 | 0.790 |
 
+## E14 bounded attacker
+
+Fraud accepted under attackers limited in how many freely chosen fields they may change and how far each may move; withholding stays free.
+
+| dataset | model | truthful | fields 0 | fields 1 | fields 2 | fields 3 | fields 5 | window 0.02 | window 0.05 | window 0.1 | window 0.25 | window 0.5 | fields 2 window 0.1 | unbounded |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| ieee_cis | conventional | 37.1% ± 0.4% | 46.9% ± 1.0% | 59.8% ± 1.2% | 66.0% ± 1.4% | 69.3% ± 1.5% | 73.5% ± 1.7% | 53.9% ± 1.2% | 55.0% ± 1.1% | 56.3% ± 1.2% | 65.6% ± 0.7% | 75.0% ± 1.0% | 55.2% ± 0.9% | 79.2% ± 2.1% |
+| ieee_cis | monotone_w | 37.3% ± 0.7% | 37.3% ± 0.7% | 53.0% ± 0.3% | 61.9% ± 0.7% | 66.7% ± 1.0% | 71.6% ± 1.0% | 45.1% ± 0.9% | 46.7% ± 1.1% | 48.1% ± 0.9% | 60.0% ± 0.4% | 70.3% ± 0.7% | 47.2% ± 0.9% | 76.0% ± 0.8% |
+| ieee_cis | control_typed | 39.9% ± 0.3% | 39.9% ± 0.3% | 39.9% ± 0.3% | 39.9% ± 0.3% | 39.9% ± 0.3% | 39.9% ± 0.3% | 39.9% ± 0.3% | 39.9% ± 0.3% | 39.9% ± 0.3% | 39.9% ± 0.3% | 39.9% ± 0.3% | 39.9% ± 0.3% | 39.9% ± 0.3% |
+| baf | conventional | 41.8% ± 0.1% | 44.0% ± 0.1% | 75.1% ± 0.1% | 91.9% ± 0.2% | 97.8% ± 0.2% | 99.9% ± 0.0% | 45.9% ± 0.2% | 50.4% ± 0.1% | 61.2% ± 0.8% | 100.0% | 100.0% | 57.3% ± 0.4% | 100.0% |
+| baf | monotone_w | 41.6% ± 0.8% | 41.6% ± 0.8% | 74.1% ± 0.3% | 91.4% ± 0.2% | 98.0% ± 0.2% | 99.9% ± 0.0% | 43.3% ± 0.8% | 47.9% ± 0.4% | 59.0% ± 0.3% | 100.0% | 100.0% | 54.7% ± 0.3% | 100.0% |
+| baf | control_typed | 63.5% ± 0.5% | 63.5% ± 0.5% | 63.5% ± 0.5% | 63.5% ± 0.5% | 63.5% ± 0.5% | 63.5% ± 0.5% | 63.5% ± 0.5% | 63.5% ± 0.5% | 63.5% ± 0.5% | 63.5% ± 0.5% | 63.5% ± 0.5% | 63.5% ± 0.5% | 63.5% ± 0.5% |
+| synthetic | conventional | 40.5% ± 0.5% | 50.3% ± 0.1% | 78.0% ± 0.2% | 85.2% ± 0.3% | 86.8% ± 0.3% | 86.8% ± 0.3% | 84.0% ± 0.4% | 84.8% ± 0.2% | 85.2% ± 0.3% | 86.2% ± 0.2% | 87.4% ± 0.0% | 83.6% ± 0.4% | 87.7% ± 0.3% |
+| synthetic | monotone_w | 40.8% ± 0.6% | 40.8% ± 0.6% | 69.9% ± 0.1% | 78.9% ± 0.5% | 80.6% ± 0.6% | 80.6% ± 0.6% | 76.2% ± 0.2% | 77.2% ± 0.3% | 77.8% ± 0.3% | 79.2% ± 0.4% | 80.6% ± 0.7% | 76.7% ± 0.2% | 80.8% ± 0.7% |
+| synthetic | control_typed | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% | 42.7% ± 0.1% |
+
 ## Figures
 
 - `figures/fig_e10_comparison.png`
@@ -359,6 +376,7 @@ Zero-leakage feasible (Theorem 4): P1_three_branch False, P2_two_branch False, P
 - `figures/fig_e12_curves_ieee_cis.png`
 - `figures/fig_e12_curves_synthetic.png`
 - `figures/fig_e13_repair_scaling.png`
+- `figures/fig_e14_bounded_attacker.png`
 - `figures/fig_e1_evaluation_gap.png`
 - `figures/fig_e2_defences.png`
 - `figures/fig_e3_splitting_exposure.png`

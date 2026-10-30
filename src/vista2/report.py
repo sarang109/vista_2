@@ -225,6 +225,21 @@ def write(out, manifest):
                           _num(r["exact_model_calls_per_payment"], digits=0), _num(r["box_ms_per_payment"], digits=2),
                           _num(r["box_minus_exact_mean"])] for r in e13]))
         L.append("")
+    e14 = _load(out, "e14_bounded.csv")
+    if e14:
+        L += ["## E14 bounded attacker", "",
+              "Fraud accepted under attackers limited in how many freely chosen fields they may change and how far "
+              "each may move; withholding stays free.", ""]
+        order = ["truthful", "fields_0", "fields_1", "fields_2", "fields_3", "fields_5", "window_0.02", "window_0.05",
+                 "window_0.1", "window_0.25", "window_0.5", "fields_2_window_0.1", "unbounded"]
+        rows = []
+        for d in dict.fromkeys(r["dataset"] for r in e14):
+            for vname in dict.fromkeys(r["variant"] for r in e14 if r["dataset"] == d):
+                g = {r["attack"]: r for r in e14 if r["dataset"] == d and r["variant"] == vname}
+                rows.append([d, vname] + [_pm(g[a], "fraud_accepted_truthful" if a == "truthful" else
+                                              "fraud_accepted_attack") if a in g else "" for a in order])
+        L.append(_table(["dataset", "model"] + [a.replace("_", " ") for a in order], rows))
+        L.append("")
     figs = sorted(os.listdir(os.path.join(out, "figures"))) if os.path.isdir(os.path.join(out, "figures")) else []
     if figs:
         L += ["## Figures", ""] + [f"- `figures/{f}`" for f in figs] + [""]

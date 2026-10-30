@@ -420,3 +420,35 @@
 [23:51:46] e8: ok in 432.4 s
 [23:51:47] figures: 11 written
 [23:51:47] summary: SUMMARY.md written
+[08:06:19] run full: steps e14
+[08:06:19] e14: bounded attacker
+[08:08:43]   e14 ieee_cis naive seed 1: truthful 0.375, fields_1 0.592, window_0.05 0.554, fields_2_window_0.1 0.554, unbounded 0.770
+[08:11:06]   e14 ieee_cis naive seed 2: truthful 0.368, fields_1 0.612, window_0.05 0.558, fields_2_window_0.1 0.559, unbounded 0.793
+[08:13:26]   e14 ieee_cis naive seed 3: truthful 0.369, fields_1 0.590, window_0.05 0.538, fields_2_window_0.1 0.542, unbounded 0.813
+[08:15:46]   e14 ieee_cis monotone_w seed 1: truthful 0.381, fields_1 0.526, window_0.05 0.476, fields_2_window_0.1 0.478, unbounded 0.753
+[08:18:12]   e14 ieee_cis monotone_w seed 2: truthful 0.371, fields_1 0.532, window_0.05 0.470, fields_2_window_0.1 0.475, unbounded 0.758
+[08:20:19]   e14 ieee_cis monotone_w seed 3: truthful 0.367, fields_1 0.532, window_0.05 0.455, fields_2_window_0.1 0.461, unbounded 0.769
+[08:20:52]   e14 ieee_cis control_typed seed 1: truthful 0.402, fields_1 0.402, window_0.05 0.402, fields_2_window_0.1 0.402, unbounded 0.402
+[08:21:25]   e14 ieee_cis control_typed seed 2: truthful 0.399, fields_1 0.399, window_0.05 0.399, fields_2_window_0.1 0.399, unbounded 0.399
+[08:21:57]   e14 ieee_cis control_typed seed 3: truthful 0.396, fields_1 0.396, window_0.05 0.396, fields_2_window_0.1 0.396, unbounded 0.396
+[08:22:42]   e14 baf naive seed 1: truthful 0.419, fields_1 0.751, window_0.05 0.505, fields_2_window_0.1 0.571, unbounded 1.000
+[08:23:32]   e14 baf naive seed 2: truthful 0.418, fields_1 0.750, window_0.05 0.504, fields_2_window_0.1 0.577, unbounded 1.000
+[08:24:13]   e14 baf naive seed 3: truthful 0.417, fields_1 0.753, window_0.05 0.503, fields_2_window_0.1 0.572, unbounded 1.000
+[08:24:59]   e14 baf monotone_w seed 1: truthful 0.408, fields_1 0.743, window_0.05 0.475, fields_2_window_0.1 0.545, unbounded 1.000
+[08:25:44]   e14 baf monotone_w seed 2: truthful 0.422, fields_1 0.743, window_0.05 0.484, fields_2_window_0.1 0.550, unbounded 1.000
+[08:26:28]   e14 baf monotone_w seed 3: truthful 0.419, fields_1 0.738, window_0.05 0.478, fields_2_window_0.1 0.545, unbounded 1.000
+[08:26:33]   e14 baf control_typed seed 1: truthful 0.631, fields_1 0.631, window_0.05 0.631, fields_2_window_0.1 0.631, unbounded 0.631
+[08:26:38]   e14 baf control_typed seed 2: truthful 0.640, fields_1 0.640, window_0.05 0.640, fields_2_window_0.1 0.640, unbounded 0.640
+[08:26:44]   e14 baf control_typed seed 3: truthful 0.634, fields_1 0.634, window_0.05 0.634, fields_2_window_0.1 0.634, unbounded 0.634
+[08:26:51]   e14 synthetic unconstrained seed 1: truthful 0.410, fields_1 0.781, window_0.05 0.850, fields_2_window_0.1 0.839, unbounded 0.880
+[08:26:58]   e14 synthetic unconstrained seed 2: truthful 0.400, fields_1 0.781, window_0.05 0.845, fields_2_window_0.1 0.832, unbounded 0.875
+[08:27:06]   e14 synthetic unconstrained seed 3: truthful 0.404, fields_1 0.778, window_0.05 0.850, fields_2_window_0.1 0.838, unbounded 0.875
+[08:27:13]   e14 synthetic monotone_w seed 1: truthful 0.402, fields_1 0.698, window_0.05 0.770, fields_2_window_0.1 0.766, unbounded 0.801
+[08:27:21]   e14 synthetic monotone_w seed 2: truthful 0.413, fields_1 0.700, window_0.05 0.773, fields_2_window_0.1 0.766, unbounded 0.811
+[08:27:28]   e14 synthetic monotone_w seed 3: truthful 0.410, fields_1 0.701, window_0.05 0.775, fields_2_window_0.1 0.770, unbounded 0.814
+[08:27:33]   e14 synthetic control_typed seed 1: truthful 0.428, fields_1 0.428, window_0.05 0.428, fields_2_window_0.1 0.428, unbounded 0.428
+[08:27:38]   e14 synthetic control_typed seed 2: truthful 0.426, fields_1 0.426, window_0.05 0.426, fields_2_window_0.1 0.426, unbounded 0.426
+[08:27:42]   e14 synthetic control_typed seed 3: truthful 0.426, fields_1 0.426, window_0.05 0.426, fields_2_window_0.1 0.426, unbounded 0.426
+[08:27:42] e14: ok in 1283.1 s
+[08:27:44] figures: 12 written
+[08:27:44] summary: SUMMARY.md written
