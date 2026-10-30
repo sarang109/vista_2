@@ -10,6 +10,9 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.23819147
     description: Concept DOI (all versions)
+  - type: doi
+    value: 10.5281/zenodo.23819353
+    description: Version 1.0.0
 repository-code: "https://github.com/sarang109/vista_2"
 authors:
   - family-names: Kulkarni
