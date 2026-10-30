@@ -11,3 +11,13 @@ baf,has_other_cards -> F,pessimistic,0.749894,0.702667,0.702667,0.889632,0.43333
 baf,verify_income_employment,verified_upgrade,0.7909,0.607333,0.607333,0.888681,0.435333,1,0.0977805
 baf,verify_identity_fields,verified_upgrade,0.839497,0.558667,0.558667,0.888126,0.434667,1,0.0486288
 baf,verify_all_self_reported,verified_upgrade,0.85905,0.504,0.504,0.887634,0.433333,0.942667,0.0285844
+ieee_cis,baseline typing,baseline,0.878766,0.408,0.408,0.893367,0.376,0.75,0.0146013
+ieee_cis,group:D -> F,pessimistic,0.878652,0.407333,0.407333,0.895589,0.37,1,0.0169373
+ieee_cis,group:V -> F,pessimistic,0.880539,0.416,0.416,0.894572,0.366,1,0.0140337
+ieee_cis,group:id_num -> F,pessimistic,0.875308,0.406667,0.406667,0.895922,0.362667,0.921333,0.0206144
+ieee_cis,ProductCD -> F,pessimistic,0.877067,0.411333,0.411333,0.893367,0.376,0.756,0.0162997
+ieee_cis,group:dist -> T,optimistic,0.879565,0.397333,0.397333,0.893367,0.376,0.713333,0.0138021
+ieee_cis,group:M -> T,optimistic,0.883682,0.402667,0.402667,0.892148,0.377333,0.755333,0.00846631
+ieee_cis,group:id_flags -> T,optimistic,0.879005,0.4,0.4,0.893951,0.375333,0.748,0.0149465
+ieee_cis,verify_email_and_address,verified_upgrade,0.887099,0.38,0.38,0.894103,0.371333,0.648667,0.00700423
+ieee_cis,verify_device,verified_upgrade,0.880969,0.402,0.402,0.895436,0.379333,0.704667,0.0144675

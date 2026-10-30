@@ -118,7 +118,8 @@ def load(data_dir: str, seed: int = 0, cache: bool = True) -> TypedTable:
                     and c not in F_CODES]
         for c in other_id:
             X[c] = _codes(df[c]) if not pd.api.types.is_numeric_dtype(df[c]) else df[c].fillna(-999).astype(np.float32)
-        key = df[CARD].astype(str).agg("|".join, axis=1).astype("category").cat.codes.to_numpy()
+        key = df[CARD].astype(object).fillna("na").astype(str).agg("|".join, axis=1).astype("category").cat.codes.to_numpy()
+        X = X.copy()  # columns were added one at a time; consolidate before the last two
         X["cum_amt_24h"] = _cumulative(df["TransactionDT"].to_numpy(np.int64), df["TransactionAmt"].to_numpy(float),
                                        key).astype(np.float32)
         X["card_key"] = key.astype(np.int64)

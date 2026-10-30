@@ -76,7 +76,7 @@ def fig_defences(out):
         ax.set_ylim(0, 100)
         ax.set_ylabel("fraud accepted at 5% legitimate hold (%)")
     handles, labels = axes[0][0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="lower center", ncol=3, bbox_to_anchor=(0.5, -0.08))
+    fig.legend(handles, labels, loc="upper center", ncol=3, bbox_to_anchor=(0.5, -0.02))
     return [_save(fig, out, "fig_e2_defences.png")]
 
 

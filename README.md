@@ -84,9 +84,7 @@ Bold rows are additions beyond the original plan.
 See `results/full/SUMMARY.md` for every table. Headline numbers are filled in below from that file.
 
 All numbers are from `results/full` (5 seeds unless stated; mean ± standard deviation over seeds; fraud
-acceptance at the threshold that holds 5% of legitimate validation payments). IEEE-CIS is not included in this
-run: the Kaggle account used could not download the competition files (HTTP 403 until the competition rules are
-accepted for that account). The pipeline runs it as soon as the files are in `data/ieee_cis/`.
+acceptance at the threshold that holds 5% of legitimate validation payments).
 
 **Theory checks (E0).** 27 numerical checks on 50 to 3,000 random instances each (Theorems 1–5, Corollary 1 by
 exhaustive enumeration of all 262,144 rules on a small typed space, Algorithm 2b, the box repair): no failures.
@@ -101,18 +99,32 @@ The non-atomic counter control breaks the splitting bound in 50 of 50 trials, as
 | synthetic | monotone in W | 0.907 | 40.8% | 40.8% | 81.0% |
 | synthetic | W-repaired (Alg. 2b) | 0.882 | 51.5% | 51.5% | 89.4% |
 | synthetic | **control-typed** | **0.898** | **42.6%** | **42.6%** | **42.6%** |
+| IEEE-CIS | naive LightGBM | 0.896 | 36.9% | 46.8% | 79.0% |
+| IEEE-CIS | monotone in W | 0.894 | 37.0% | 37.0% | 76.5% |
+| IEEE-CIS | W-repaired | 0.881 | 41.8% | 41.8% | 75.6% |
+| IEEE-CIS | full repair (box) | 0.722 | 67.2% | 67.2% | 67.2% |
+| IEEE-CIS | **control-typed** | **0.882** | **39.9%** | **39.9%** | **39.9%** |
 | BAF | naive LightGBM | 0.892 | 42.1% | 44.3% | 100.0% |
 | BAF | **control-typed** | **0.774** | **64.1%** | **64.1%** | **64.1%** |
 
-The gap appears for LightGBM, XGBoost and an MLP alike (E1). Monotonicity in `W` removes the withholding gain
-but not the `F` attacks, which are the larger effect on every dataset. On the synthetic workload,
-control-typed training costs 0.009 AUC; on BAF it costs 0.118 AUC, because self-reported fields carry most of
-BAF's signal, so **Gate A fails on BAF as typed today**. E8 shows what would change that: if the sending bank
-attested the identity fields the cost drops to 0.049, and with all self-reported fields attested to 0.029.
+The gap appears for LightGBM, XGBoost and an MLP alike (E1): on IEEE-CIS the full attacker raises fraud
+acceptance by 41–47 points for every learner (to 77.4% for XGBoost and 92.5% for the MLP). Monotonicity in `W`
+removes the withholding gain but not the `F` attacks, which are the larger effect on every dataset.
+
+**Gate A passes on IEEE-CIS.** Control-typed training costs 0.014 AUC (0.896 → 0.882) and removes the gap
+entirely: 39.9% of fraud accepted truthfully and under every attack. E8 moves each uncertain feature group
+between types; the cost stays between 0.007 and 0.021 (only treating the anonymised numeric `id_` features as
+attacker-controlled pushes it just past 0.02), so the result does not hinge on the typing.
+
+**Gate A fails on BAF as typed today.** Control-typed training costs 0.118 AUC there, because self-reported
+fields carry most of BAF's signal. E8 shows what would change that: if the sending bank attested the identity
+fields the cost drops to 0.049, and with all self-reported fields attested to 0.029. On the synthetic workload
+the cost is 0.009.
 
 **Repairing a black box is not a substitute for control-typed training (E2, E13).** Repairing `W` only
 (Algorithm 2b) costs 0.025 AUC and leaves the `F` attacks open. The full safe repair is SP by construction,
-but on the synthetic model even the exact repair falls to AUC 0.772 (box relaxation: 0.444). Exact
+but on the synthetic model even the exact repair falls to AUC 0.772 (box relaxation: 0.444), and on IEEE-CIS
+the box-repaired model falls to AUC 0.722. Exact
 repair cost grows as `4^n` for a payment that shows nothing (270 ms at 262,144 lattice points); the box repair
 stays near 1 ms but is loose exactly there.
 

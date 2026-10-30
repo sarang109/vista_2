@@ -102,28 +102,6 @@
       "seconds": 4.1
     },
     {
-      "step": "e1",
-      "description": "evaluation gap on real data",
-      "status": "ok",
-      "files": {
-        "e1_gap_runs.csv": "cfaf05b89461b150efc58a7a448e5034805aa79575664f7f641fe8684fce7785",
-        "e1_gap.csv": "d5c5ff2f4ea95d404610ad16cd1acc2893614188d085de4ecfb4e2e8b8c10f4a"
-      },
-      "seconds": 153.3
-    },
-    {
-      "step": "e2",
-      "description": "cost of each defence, operating curves",
-      "status": "ok",
-      "files": {
-        "e2_defences_runs.csv": "b0624fc172af6bfae03c3829eb6e2c1f6f90c334cd4458e2b5f68a062a6a5228",
-        "e2_defences.csv": "62baf921c0c1822856485c4707d1ac252e41ed31a6099c2e77d2b48e698973b6",
-        "e12_operating_curves.csv": "3a19c5c7cd4e8da8e438470596b533c3d7123ffd1449fd3c8f37898bd9274f98",
-        "e2_box_vs_exact.csv": "a6f2049fc03fe08c6d6848acc1b572d2cc634c25c920eb9934a6b7fd9bab42c8"
-      },
-      "seconds": 876.3
-    },
-    {
       "step": "e3",
       "description": "splitting and the cumulative claim (PaySim)",
       "status": "ok",
@@ -176,15 +154,6 @@
       "seconds": 8.5
     },
     {
-      "step": "e8",
-      "description": "typing sensitivity",
-      "status": "ok",
-      "files": {
-        "e8_typing_sensitivity.csv": "c7715889e648abd0bffa383f1b0b993f2de67bdbb86222dce2039797d2e61153"
-      },
-      "seconds": 134.5
-    },
-    {
       "step": "e9",
       "description": "rollout-stage sweep",
       "status": "ok",
@@ -221,6 +190,37 @@
         "e13_repair_scaling.csv": "7fe1e87e7ea3e0fcd813ae7ba1ffbfb031338565d5698df905461aac3c32a991"
       },
       "seconds": 7.7
+    },
+    {
+      "step": "e1",
+      "description": "evaluation gap on real data",
+      "status": "ok",
+      "files": {
+        "e1_gap_runs.csv": "316a253bd4ee97db573189121c2175bc76c5d81ec280ff016722b715fa0672b5",
+        "e1_gap.csv": "839370b4843392312215185490f3e5769f2b1af5067e2f25006b831ccc124fed"
+      },
+      "seconds": 500.5
+    },
+    {
+      "step": "e2",
+      "description": "cost of each defence, operating curves",
+      "status": "ok",
+      "files": {
+        "e2_defences_runs.csv": "010ad44350441f0612f5173c5ef6f0ff9d2331711801015257a7629f199b3efe",
+        "e2_defences.csv": "8f84254907f81456e6f299afa69bfa065271144db83f36d09dd7c542fa30aa40",
+        "e12_operating_curves.csv": "d796de0db80b6600703e960b14fe52f2c6e2d27d84e671b0e7a1905268804085",
+        "e2_box_vs_exact.csv": "a6f2049fc03fe08c6d6848acc1b572d2cc634c25c920eb9934a6b7fd9bab42c8"
+      },
+      "seconds": 3871.1
+    },
+    {
+      "step": "e8",
+      "description": "typing sensitivity",
+      "status": "ok",
+      "files": {
+        "e8_typing_sensitivity.csv": "52ee99a2759157a9d9f26d87246ff1ed7a3ed9b1791dda5f739d1b1512adbad0"
+      },
+      "seconds": 432.4
     }
   ]
 }

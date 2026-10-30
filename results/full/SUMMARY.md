@@ -5,18 +5,18 @@ Python 3.14.7, LightGBM 4.7.0, XGBoost 3.4.1, scikit-learn 1.9.1, 8 CPUs (arm64)
 | step | status | seconds |
 |---|---|---|
 | e0 theory checks (Theorems 1-5, Corollary 1, Algorithms 2b and 3) | ok | 4.1 |
-| e1 evaluation gap on real data | ok | 153.3 |
-| e2 cost of each defence, operating curves | ok | 876.3 |
 | e3 splitting and the cumulative claim (PaySim) | ok | 48.6 |
 | e4 agentic adversaries, Gate B | ok | 154.3 |
 | e5 repeated agent payments | ok | 2.4 |
 | e6 payment-path overhead | ok | 10.2 |
 | e7 binding-layer attack suite | ok | 8.5 |
-| e8 typing sensitivity | ok | 134.5 |
 | e9 rollout-stage sweep | ok | 164.4 |
 | e10 measured comparison of designs | ok | 294.0 |
 | e11 attacker strength and transfer | ok | 34.3 |
 | e13 repair cost against lattice size | ok | 7.7 |
+| e1 evaluation gap on real data | ok | 500.5 |
+| e2 cost of each defence, operating curves | ok | 3871.1 |
+| e8 typing sensitivity | ok | 432.4 |
 
 ## E0 theory checks
 
@@ -56,6 +56,15 @@ Python 3.14.7, LightGBM 4.7.0, XGBoost 3.4.1, scikit-learn 1.9.1, 8 CPUs (arm64)
 
 | dataset | learner | attacker | AUC | evaluated | realized | gap |
 |---|---|---|---|---|---|---|
+| ieee_cis | lightgbm | withholding | 0.896 ± 0.002 | 36.9% ± 0.4% | 46.8% ± 1.1% | 9.9% ± 1.0% |
+| ieee_cis | lightgbm | f_only | 0.896 ± 0.002 | 36.9% ± 0.4% | 76.6% ± 0.7% | 39.6% ± 0.9% |
+| ieee_cis | lightgbm | full | 0.896 ± 0.002 | 36.9% ± 0.4% | 79.0% ± 1.5% | 42.0% ± 1.8% |
+| ieee_cis | xgboost | withholding | 0.896 ± 0.001 | 36.2% ± 0.7% | 46.6% ± 0.9% | 10.4% ± 1.1% |
+| ieee_cis | xgboost | f_only | 0.896 ± 0.001 | 36.2% ± 0.7% | 75.1% ± 0.7% | 38.9% ± 1.3% |
+| ieee_cis | xgboost | full | 0.896 ± 0.001 | 36.2% ± 0.7% | 77.4% ± 1.6% | 41.2% ± 1.7% |
+| ieee_cis | mlp | withholding | 0.838 ± 0.008 | 45.6% ± 1.4% | 67.2% ± 2.2% | 21.6% ± 2.4% |
+| ieee_cis | mlp | f_only | 0.838 ± 0.008 | 45.6% ± 1.4% | 83.2% ± 1.7% | 37.6% ± 2.9% |
+| ieee_cis | mlp | full | 0.838 ± 0.008 | 45.6% ± 1.4% | 92.5% ± 2.7% | 46.9% ± 3.4% |
 | baf | lightgbm | withholding | 0.892 ± 0.000 | 42.1% ± 0.5% | 44.3% ± 0.3% | 2.2% ± 0.4% |
 | baf | lightgbm | f_only | 0.892 ± 0.000 | 42.1% ± 0.5% | 100.0% | 57.9% ± 0.5% |
 | baf | lightgbm | full | 0.892 ± 0.000 | 42.1% ± 0.5% | 100.0% | 57.9% ± 0.5% |
@@ -88,6 +97,16 @@ Python 3.14.7, LightGBM 4.7.0, XGBoost 3.4.1, scikit-learn 1.9.1, 8 CPUs (arm64)
 | repaired_full | 0.473 ± 0.041 | 4.9% ± 0.2% | 98.5% ± 0.2% | 98.5% ± 0.2% | 98.5% ± 0.2% | 99.9% ± 0.0% |
 | control_typed | 0.898 ± 0.000 | 5.1% ± 0.0% | 42.6% ± 0.4% | 42.6% ± 0.4% | 42.6% ± 0.4% | 16.8% ± 0.2% |
 
+**ieee_cis**
+
+| model | AUC | legit held | fraud acc. truthful | withholding | full attack | fraud value acc. (full) |
+|---|---|---|---|---|---|---|
+| naive | 0.896 ± 0.002 | 5.7% ± 0.0% | 36.9% ± 0.4% | 46.8% ± 1.1% | 79.0% ± 1.5% | 88.8% ± 0.5% |
+| monotone_w | 0.894 ± 0.002 | 5.8% ± 0.0% | 37.0% ± 0.6% | 37.0% ± 0.6% | 76.5% ± 1.2% | 86.9% ± 1.1% |
+| repaired_w | 0.881 ± 0.007 | 5.8% ± 0.2% | 41.8% ± 2.6% | 41.8% ± 2.6% | 75.6% ± 2.4% | 88.3% ± 2.7% |
+| repaired_full | 0.722 ± 0.021 | 4.7% ± 0.3% | 67.2% ± 3.0% | 67.2% ± 3.0% | 67.2% ± 3.0% | 87.1% ± 1.6% |
+| control_typed | 0.882 ± 0.001 | 5.8% ± 0.1% | 39.9% ± 0.5% | 39.9% ± 0.5% | 39.9% ± 0.5% | 44.9% ± 0.6% |
+
 **baf**
 
 | model | AUC | legit held | fraud acc. truthful | withholding | full attack | fraud value acc. (full) |
@@ -108,7 +127,7 @@ Full repair of the unconstrained synthetic model, exact enumeration against the 
 
 ### Gate A
 
-- ieee_cis: not run
+- ieee_cis: realized gap of the naive model 42.0 points; control-typed AUC cost 0.014 -> Gate A **passes** on this dataset
 - baf: realized gap of the naive model 57.9 points; control-typed AUC cost 0.118 -> Gate A **fails** on this dataset
 
 ## E3 splitting (Theorem 3), PaySim
@@ -232,6 +251,16 @@ Zero-leakage feasible (Theorem 4): P1_three_branch False, P2_two_branch False, P
 | baf | verify_income_employment | verified_upgrade | 0.791 | 0.098 | 100.0% |
 | baf | verify_identity_fields | verified_upgrade | 0.839 | 0.049 | 100.0% |
 | baf | verify_all_self_reported | verified_upgrade | 0.859 | 0.029 | 94.3% |
+| ieee_cis | baseline typing | baseline | 0.879 | 0.015 | 75.0% |
+| ieee_cis | group:D -> F | pessimistic | 0.879 | 0.017 | 100.0% |
+| ieee_cis | group:V -> F | pessimistic | 0.881 | 0.014 | 100.0% |
+| ieee_cis | group:id_num -> F | pessimistic | 0.875 | 0.021 | 92.1% |
+| ieee_cis | ProductCD -> F | pessimistic | 0.877 | 0.016 | 75.6% |
+| ieee_cis | group:dist -> T | optimistic | 0.880 | 0.014 | 71.3% |
+| ieee_cis | group:M -> T | optimistic | 0.884 | 0.008 | 75.5% |
+| ieee_cis | group:id_flags -> T | optimistic | 0.879 | 0.015 | 74.8% |
+| ieee_cis | verify_email_and_address | verified_upgrade | 0.887 | 0.007 | 64.9% |
+| ieee_cis | verify_device | verified_upgrade | 0.881 | 0.014 | 70.5% |
 
 ## E9 rollout stage
 
@@ -327,6 +356,7 @@ Zero-leakage feasible (Theorem 4): P1_three_branch False, P2_two_branch False, P
 
 - `figures/fig_e10_comparison.png`
 - `figures/fig_e12_curves_baf.png`
+- `figures/fig_e12_curves_ieee_cis.png`
 - `figures/fig_e12_curves_synthetic.png`
 - `figures/fig_e13_repair_scaling.png`
 - `figures/fig_e1_evaluation_gap.png`
