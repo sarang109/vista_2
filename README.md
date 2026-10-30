@@ -1,6 +1,6 @@
 # VISTA v2: strategy-proof receiver decisions over attested evidence
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23819148.svg)](https://doi.org/10.5281/zenodo.23819148)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23819147.svg)](https://doi.org/10.5281/zenodo.23819147)
 
 **Research artifact for agentic and real-time payments.**
 
@@ -243,8 +243,8 @@ is attenuation by minimum as in SPKI, UCAN and macaroons; both are reused, not c
 
 ## License and citation
 
-The code is released under the MIT License (`LICENSE`). Citation metadata is in `CITATION.cff`. Version
-2.0.0 is archived on Zenodo as https://doi.org/10.5281/zenodo.23819148; the concept DOI
-https://doi.org/10.5281/zenodo.23819147 always resolves to the latest version. The
+The code is released under the MIT License (`LICENSE`). Citation metadata is in `CITATION.cff`. The
+archive is on Zenodo; the concept DOI https://doi.org/10.5281/zenodo.23819147 always resolves to the latest
+version. The
 datasets keep their own licences and are not redistributed here: BAF is CC BY-NC-SA 4.0, IEEE-CIS is
 subject to the Kaggle competition rules, and PaySim is downloaded from its public source.

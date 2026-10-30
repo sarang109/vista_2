@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vista2"
-version = "2.0.0"
+version = "1.0.0"
 description = "VISTA v2: strategy-proof receiver decisions over attested evidence for agentic and real-time payments (research artifact)"
 readme = "README.md"
 license = "MIT"
